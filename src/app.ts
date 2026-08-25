@@ -3,6 +3,7 @@ dotenv.config()
 import express, { Application, Request, Response } from "express"
 import cors from "cors"
 import { logger } from "./config/logger"
+import { apiRoutes } from "./utils/route"
 
 const app: Application = express()
 
@@ -18,5 +19,6 @@ app.get('/', (req: Request, res: Response) => {
     });
 });
 
+app.use("/api/v1", apiRoutes)
 
 export default app;

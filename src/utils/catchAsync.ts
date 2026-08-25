@@ -1,14 +1,12 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
 
 
- export const catchAsync = async (fn:RequestHandler) => {
-    return   async (req: Request, res: Response, next:NextFunction)=>{
+export const catchAsync = (fn: RequestHandler) => {
+    return async (req: Request, res: Response, next: NextFunction) => {
         try {
-           await fn(req,res,next)
-        } catch (error) {
+            await fn(req, res, next);
+        } catch (error: unknown) {
             next(error)
-            console.log(error)
-            throw error
         }
     }
 }
