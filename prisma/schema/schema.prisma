@@ -1,3 +1,4 @@
+
 generator client {
   provider = "prisma-client"
   output   = "../../src/generated/"
@@ -6,10 +7,4 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
-
-model User { 
-  id    String   @id @default(cuid())
-  email String
-  name  String?
-} 
 
