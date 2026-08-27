@@ -1,10 +1,13 @@
 import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
 import { Prisma } from "../generated/client";
 import envConfig from "../config/env";
+import z from "zod";
+import { IErrorSource, zodValidationError } from "./zodValidation";
 
 const globalErrorHandler: ErrorRequestHandler = (err: any, req: Request, res: Response, _next: NextFunction) => {
     let statusCode = err.statusCode || 500;
     let message = "Internal Server Error";
+  let errorSource: IErrorSource[] = [];
 
     if (err instanceof Prisma.PrismaClientKnownRequestError) {
         switch (err.code) {
@@ -40,13 +43,24 @@ const globalErrorHandler: ErrorRequestHandler = (err: any, req: Request, res: Re
         message = err.message
     }
 
+    if (err instanceof z.ZodError) {
+        const zodError = zodValidationError(err)
+        statusCode = zodError.statusCode
+        message = zodError.message
+        errorSource = zodError.errorSource
+        
+    }
     res.status(statusCode).json({
         statusCode,
         success: false,
         message,
         ...(envConfig.env === "development" && {
-            error: err
+           
+            errorSource,
+             error: err,
         })
+
+        
     })
 }
 

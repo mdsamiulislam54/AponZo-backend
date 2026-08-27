@@ -13,5 +13,23 @@ export const auth = betterAuth({
         maxPasswordLength: 8
 
     },
-    trustedOrigins: [envConfig.auth_url!]
+    trustedOrigins: [envConfig.auth_url!],
+    user: {
+        additionalFields: {
+            role: {
+                type: "string",
+                required: true,
+                default: "user"
+            },
+          
+            // phone: {
+            //     type: "string",
+            //     required: true,
+            // },
+            // address: {
+            //     type: "string",
+            //     required: true,
+            // }
+        }
+    }
 });
