@@ -1,0 +1,42 @@
+
+model Seller {
+  userId             String               @unique
+  businessName       String               @unique
+  status             SELLER_STATUS        @default(PENDING)
+  businessType       BUSINESS_TYPE        @default(INDIVIDUAL)
+  verificationStatus VERIFICATION_STATUS  @default(PENDING)
+  rating             Float                @default(0.0)
+  totalReviews       Int                  @default(0)
+  fraudScore         Float                @default(0.0)
+  isDeleted          Boolean              @default(false)
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime
+  User               User                @relation(fields: [userId], references: [id],onDelete: Cascade, onUpdate: Cascade)
+
+
+  @@index([businessName, status])
+  @@map("sellers")
+
+}
+
+
+
+enum SELLER_STATUS {
+    PENDING
+    APPROVED
+    REJECTED
+}
+
+enum BUSINESS_TYPE {
+    INDIVIDUAL
+    COMPANY
+    PARTNERSHIP
+}
+
+enum VERIFICATION_STATUS {
+    PENDING
+    UNDER_REVIEW
+    VERIFIED
+    REJECTED
+}
+

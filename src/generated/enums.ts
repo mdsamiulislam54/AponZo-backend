@@ -24,3 +24,31 @@ export const Status = {
 } as const
 
 export type Status = (typeof Status)[keyof typeof Status]
+
+
+export const SELLER_STATUS = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type SELLER_STATUS = (typeof SELLER_STATUS)[keyof typeof SELLER_STATUS]
+
+
+export const BUSINESS_TYPE = {
+  INDIVIDUAL: 'INDIVIDUAL',
+  COMPANY: 'COMPANY',
+  PARTNERSHIP: 'PARTNERSHIP'
+} as const
+
+export type BUSINESS_TYPE = (typeof BUSINESS_TYPE)[keyof typeof BUSINESS_TYPE]
+
+
+export const VERIFICATION_STATUS = {
+  PENDING: 'PENDING',
+  UNDER_REVIEW: 'UNDER_REVIEW',
+  VERIFIED: 'VERIFIED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type VERIFICATION_STATUS = (typeof VERIFICATION_STATUS)[keyof typeof VERIFICATION_STATUS]
