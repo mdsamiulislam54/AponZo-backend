@@ -21,7 +21,7 @@ export const auth = betterAuth({
                 required: true,
                 default: "user"
             },
-          
+
             // phone: {
             //     type: "string",
             //     required: true,
@@ -31,5 +31,7 @@ export const auth = betterAuth({
             //     required: true,
             // }
         }
-    }
+    },
+
+    
 });

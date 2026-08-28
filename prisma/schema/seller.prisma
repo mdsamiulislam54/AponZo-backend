@@ -10,7 +10,7 @@ model Seller {
   fraudScore         Float                @default(0.0)
   isDeleted          Boolean              @default(false)
   createdAt          DateTime             @default(now())
-  updatedAt          DateTime
+  updatedAt          DateTime             @updatedAt
   User               User                @relation(fields: [userId], references: [id],onDelete: Cascade, onUpdate: Cascade)
 
 

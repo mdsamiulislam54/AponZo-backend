@@ -354,7 +354,7 @@ export type SellerCreateInput = {
   fraudScore?: number
   isDeleted?: boolean
   createdAt?: Date | string
-  updatedAt: Date | string
+  updatedAt?: Date | string
   User: Prisma.UserCreateNestedOneWithoutSellerInput
 }
 
@@ -369,7 +369,7 @@ export type SellerUncheckedCreateInput = {
   fraudScore?: number
   isDeleted?: boolean
   createdAt?: Date | string
-  updatedAt: Date | string
+  updatedAt?: Date | string
 }
 
 export type SellerUpdateInput = {
@@ -411,7 +411,7 @@ export type SellerCreateManyInput = {
   fraudScore?: number
   isDeleted?: boolean
   createdAt?: Date | string
-  updatedAt: Date | string
+  updatedAt?: Date | string
 }
 
 export type SellerUpdateManyMutationInput = {
@@ -570,7 +570,7 @@ export type SellerCreateWithoutUserInput = {
   fraudScore?: number
   isDeleted?: boolean
   createdAt?: Date | string
-  updatedAt: Date | string
+  updatedAt?: Date | string
 }
 
 export type SellerUncheckedCreateWithoutUserInput = {
@@ -583,7 +583,7 @@ export type SellerUncheckedCreateWithoutUserInput = {
   fraudScore?: number
   isDeleted?: boolean
   createdAt?: Date | string
-  updatedAt: Date | string
+  updatedAt?: Date | string
 }
 
 export type SellerCreateOrConnectWithoutUserInput = {
