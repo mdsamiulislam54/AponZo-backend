@@ -18,4 +18,13 @@ const getRefreshToken = (payload: JwtPayload) => {
     return refreshToken;
 }
 
-export { getAccessToken, getRefreshToken }
+const generateToken = (payload: JwtPayload) => {
+    const accessToken = getAccessToken(payload);
+    const refreshToken = getRefreshToken(payload);
+    return {
+        accessToken,
+        refreshToken
+    }
+}
+
+export { getAccessToken, getRefreshToken,generateToken }

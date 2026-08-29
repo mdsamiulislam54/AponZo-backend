@@ -1,9 +1,8 @@
-import status from "http-status";
+
 import { prisma } from "../../lib/prisma";
-import { AppError } from "../../middlewares/appErrors";
 import { ICreateUser, ILoginUser, SignUpResponse, } from "./auth.validation"
 import { auth } from "../../lib/auth";
-import { getAccessToken, getRefreshToken } from "../../utils/token";
+import { generateToken} from "../../utils/token";
 import { USER_ROLE } from "../../constants/user.constants";
 
 const createUser = async (payload: ICreateUser) => {
@@ -39,12 +38,10 @@ const createUser = async (payload: ICreateUser) => {
             role: user.user.role
         }
 
-        const accessToken = getAccessToken(tokenPayload);
-        const refreshToken = getRefreshToken(tokenPayload);
+          const token = generateToken(tokenPayload)
 
         return {
-            accessToken,
-            refreshToken,
+            ...token,
             ...user
         };
 
@@ -66,16 +63,6 @@ const createUser = async (payload: ICreateUser) => {
 
 const loginUser = async (payload: ILoginUser) => {
     const { email, password } = payload
-    const existingUser = await prisma.user.findUnique({
-        where: {
-            email: email,
-        },
-
-    });
-
-    if (!existingUser) {
-        throw new AppError(status.NOT_FOUND, "User not found!");
-    }
 
     const user = await auth.api.signInEmail({
         body: {
@@ -83,26 +70,18 @@ const loginUser = async (payload: ILoginUser) => {
             password,
         }
     })
-    if (!user) {
-        throw new AppError(status.NOT_FOUND, "Login failed!");
-    }
-    const accessToken = getAccessToken({
-        userId: user.user.id,
-        email: user.user.email,
-        name: user.user.name,
-        role: user.user.role
-    });
 
-    const refreshToken = getRefreshToken({
+    const tokenPayload = {
         userId: user.user.id,
         email: user.user.email,
         name: user.user.name,
         role: user.user.role
-    });
+    }
+
+    const token = generateToken(tokenPayload)
 
     return {
-        accessToken,
-        refreshToken,
+        ...token,
         ...user,
     }
 
