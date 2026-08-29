@@ -20,7 +20,7 @@ const createUser = async (payload: ICreateUser) => {
         });
         await prisma.$transaction(async (tx) => {
 
-            if (role === USER_ROLE.SELLER) {
+            if (role === USER_ROLE.SELLER && user) {
                 await tx.seller.create({
                     data: {
                         userId: user.user.id,
@@ -60,8 +60,7 @@ const createUser = async (payload: ICreateUser) => {
             })
         }
 
-        throw new AppError(status.INTERNAL_SERVER_ERROR, "Something went wrong!");
-
+        throw error;
     }
 }
 
