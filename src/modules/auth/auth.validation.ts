@@ -1,4 +1,7 @@
+import { auth } from "../../lib/auth"
+
 type BUSINESS_TYPE = "INDIVIDUAL" | "COMPANY" | "PARTNERSHIP"
+export type SignUpResponse = Awaited<ReturnType<typeof auth.api.signUpEmail>>
 // src/constants/user.constant.ts
 
 
