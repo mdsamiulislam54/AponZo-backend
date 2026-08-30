@@ -58,8 +58,27 @@ const loginUser = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
+const forgotPassword = catchAsync(async (req: Request, res: Response) => {
+    const data = await authService.forgotPassword(req.body)
+    sendResponse(res, {
+        success: true,
+        message: data.message,
+        status: status.OK,
+
+    })
+})
+const resetPassword = catchAsync(async (req: Request, res: Response) => {
+    const data = await authService.resetPassword(req.body)
+    sendResponse(res, {
+        success: true,
+        message: data.message,
+        status: status.OK,
+    })
+})
 
 export const authController = {
     createUser,
-    loginUser
+    loginUser,
+    forgotPassword,
+    resetPassword
 }

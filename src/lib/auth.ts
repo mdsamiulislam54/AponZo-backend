@@ -2,6 +2,7 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "./prisma";
 import envConfig from "../config/env";
+import { sendEmail } from "../service/sendEmail";
 export const auth = betterAuth({
     database: prismaAdapter(prisma, {
         provider: "postgresql",
@@ -10,10 +11,28 @@ export const auth = betterAuth({
     emailAndPassword: {
         enabled: true,
         autoSignIn: true,
-        maxPasswordLength: 8
+        maxPasswordLength: 8,
+        resetPasswordTokenExpiresIn: 60 * 60,
+        revokeSessionsOnPasswordReset: true,
+        sendResetPassword: async ({ user, url }) => {
+            await sendEmail({
+                to: user.email,
+                subject: "Reset Password",
+                templateName: "resetPassword",
+                templateData: {
+                    url,
+                    user
+                }
+
+            })
+
+        },
+        onPasswordReset: async ({ user }) => {
+            console.log(`Password reset successful: ${user.email}`);
+        },
 
     },
-    trustedOrigins: [envConfig.auth_url!],
+    trustedOrigins: [envConfig.auth_url!, envConfig.frontend_url!],
     user: {
         additionalFields: {
             role: {
@@ -33,5 +52,6 @@ export const auth = betterAuth({
         }
     },
 
-    
+
+
 });

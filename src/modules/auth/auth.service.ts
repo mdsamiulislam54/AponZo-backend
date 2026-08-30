@@ -1,9 +1,10 @@
 
 import { prisma } from "../../lib/prisma";
-import { ICreateUser, ILoginUser, SignUpResponse, } from "./auth.validation"
+import { ICreateUser, IForgotPassword, ILoginUser, IResetPassword, SignUpResponse, } from "./auth.validation"
 import { auth } from "../../lib/auth";
-import { generateToken} from "../../utils/token";
+import { generateToken } from "../../utils/token";
 import { USER_ROLE } from "../../constants/user.constants";
+import envConfig from "../../config/env";
 
 const createUser = async (payload: ICreateUser) => {
     const { email, name, password, role, businessName, businessType } = payload;
@@ -38,7 +39,7 @@ const createUser = async (payload: ICreateUser) => {
             role: user.user.role
         }
 
-          const token = generateToken(tokenPayload)
+        const token = generateToken(tokenPayload)
 
         return {
             ...token,
@@ -87,7 +88,38 @@ const loginUser = async (payload: ILoginUser) => {
 
 }
 
+const resetPassword = async (payload: IResetPassword) => {
+    const { newPassword, token } = payload
+
+    await auth.api.resetPassword({
+        body: {
+            newPassword,
+            token
+        }
+    })
+
+    return {
+        message: "Password reset successfully"
+    }
+
+}
+
+const forgotPassword = async (payload: IForgotPassword) => {
+    await auth.api.requestPasswordReset({
+        body: {
+            email: payload.email,
+            redirectTo: `${envConfig.frontend_url}/reset-password`
+        }
+    })
+
+    return {
+        message:"If an account exists with this email, a password reset link has been sent.",
+    };
+}
+
 export const authService = {
     createUser,
     loginUser,
+    resetPassword,
+    forgotPassword
 }

@@ -16,6 +16,7 @@ const envConfig = {
    smtp_password: env.get("SMTP_PASSWORD").asString(),
    app_name: env.get("APP_NAME").asString(),
    admin_email: env.get("ADMIN_EMAIL").asString(),
+   frontend_url: env.get("FRONTEND_URL").asString(),
 
    
 }
