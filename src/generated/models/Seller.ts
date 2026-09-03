@@ -39,6 +39,7 @@ export type SellerSumAggregateOutputType = {
 }
 
 export type SellerMinAggregateOutputType = {
+  id: string | null
   userId: string | null
   businessName: string | null
   status: $Enums.SELLER_STATUS | null
@@ -53,6 +54,7 @@ export type SellerMinAggregateOutputType = {
 }
 
 export type SellerMaxAggregateOutputType = {
+  id: string | null
   userId: string | null
   businessName: string | null
   status: $Enums.SELLER_STATUS | null
@@ -67,6 +69,7 @@ export type SellerMaxAggregateOutputType = {
 }
 
 export type SellerCountAggregateOutputType = {
+  id: number
   userId: number
   businessName: number
   status: number
@@ -95,6 +98,7 @@ export type SellerSumAggregateInputType = {
 }
 
 export type SellerMinAggregateInputType = {
+  id?: true
   userId?: true
   businessName?: true
   status?: true
@@ -109,6 +113,7 @@ export type SellerMinAggregateInputType = {
 }
 
 export type SellerMaxAggregateInputType = {
+  id?: true
   userId?: true
   businessName?: true
   status?: true
@@ -123,6 +128,7 @@ export type SellerMaxAggregateInputType = {
 }
 
 export type SellerCountAggregateInputType = {
+  id?: true
   userId?: true
   businessName?: true
   status?: true
@@ -224,6 +230,7 @@ export type SellerGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 export type SellerGroupByOutputType = {
+  id: string
   userId: string
   businessName: string
   status: $Enums.SELLER_STATUS
@@ -261,6 +268,7 @@ export type SellerWhereInput = {
   AND?: Prisma.SellerWhereInput | Prisma.SellerWhereInput[]
   OR?: Prisma.SellerWhereInput[]
   NOT?: Prisma.SellerWhereInput | Prisma.SellerWhereInput[]
+  id?: Prisma.StringFilter<"Seller"> | string
   userId?: Prisma.StringFilter<"Seller"> | string
   businessName?: Prisma.StringFilter<"Seller"> | string
   status?: Prisma.EnumSELLER_STATUSFilter<"Seller"> | $Enums.SELLER_STATUS
@@ -278,6 +286,7 @@ export type SellerWhereInput = {
 }
 
 export type SellerOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   businessName?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -295,6 +304,7 @@ export type SellerOrderByWithRelationInput = {
 }
 
 export type SellerWhereUniqueInput = Prisma.AtLeast<{
+  id?: string
   userId?: string
   businessName?: string
   AND?: Prisma.SellerWhereInput | Prisma.SellerWhereInput[]
@@ -312,9 +322,10 @@ export type SellerWhereUniqueInput = Prisma.AtLeast<{
   User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   SellerAddress?: Prisma.SellerAddressListRelationFilter
   SellerDocument?: Prisma.SellerDocumentListRelationFilter
-}, "userId" | "businessName">
+}, "id" | "userId" | "businessName">
 
 export type SellerOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   businessName?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -337,6 +348,7 @@ export type SellerScalarWhereWithAggregatesInput = {
   AND?: Prisma.SellerScalarWhereWithAggregatesInput | Prisma.SellerScalarWhereWithAggregatesInput[]
   OR?: Prisma.SellerScalarWhereWithAggregatesInput[]
   NOT?: Prisma.SellerScalarWhereWithAggregatesInput | Prisma.SellerScalarWhereWithAggregatesInput[]
+  id?: Prisma.StringWithAggregatesFilter<"Seller"> | string
   userId?: Prisma.StringWithAggregatesFilter<"Seller"> | string
   businessName?: Prisma.StringWithAggregatesFilter<"Seller"> | string
   status?: Prisma.EnumSELLER_STATUSWithAggregatesFilter<"Seller"> | $Enums.SELLER_STATUS
@@ -351,6 +363,7 @@ export type SellerScalarWhereWithAggregatesInput = {
 }
 
 export type SellerCreateInput = {
+  id?: string
   businessName: string
   status?: $Enums.SELLER_STATUS
   businessType?: $Enums.BUSINESS_TYPE
@@ -367,6 +380,7 @@ export type SellerCreateInput = {
 }
 
 export type SellerUncheckedCreateInput = {
+  id?: string
   userId: string
   businessName: string
   status?: $Enums.SELLER_STATUS
@@ -383,6 +397,7 @@ export type SellerUncheckedCreateInput = {
 }
 
 export type SellerUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
   businessType?: Prisma.EnumBUSINESS_TYPEFieldUpdateOperationsInput | $Enums.BUSINESS_TYPE
@@ -399,6 +414,7 @@ export type SellerUpdateInput = {
 }
 
 export type SellerUncheckedUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
@@ -415,6 +431,7 @@ export type SellerUncheckedUpdateInput = {
 }
 
 export type SellerCreateManyInput = {
+  id?: string
   userId: string
   businessName: string
   status?: $Enums.SELLER_STATUS
@@ -429,6 +446,7 @@ export type SellerCreateManyInput = {
 }
 
 export type SellerUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
   businessType?: Prisma.EnumBUSINESS_TYPEFieldUpdateOperationsInput | $Enums.BUSINESS_TYPE
@@ -442,6 +460,7 @@ export type SellerUpdateManyMutationInput = {
 }
 
 export type SellerUncheckedUpdateManyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
@@ -461,6 +480,7 @@ export type SellerNullableScalarRelationFilter = {
 }
 
 export type SellerCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   businessName?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -481,6 +501,7 @@ export type SellerAvgOrderByAggregateInput = {
 }
 
 export type SellerMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   businessName?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -495,6 +516,7 @@ export type SellerMaxOrderByAggregateInput = {
 }
 
 export type SellerMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   businessName?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -608,6 +630,7 @@ export type SellerUpdateOneRequiredWithoutSellerDocumentNestedInput = {
 }
 
 export type SellerCreateWithoutUserInput = {
+  id?: string
   businessName: string
   status?: $Enums.SELLER_STATUS
   businessType?: $Enums.BUSINESS_TYPE
@@ -623,6 +646,7 @@ export type SellerCreateWithoutUserInput = {
 }
 
 export type SellerUncheckedCreateWithoutUserInput = {
+  id?: string
   businessName: string
   status?: $Enums.SELLER_STATUS
   businessType?: $Enums.BUSINESS_TYPE
@@ -654,6 +678,7 @@ export type SellerUpdateToOneWithWhereWithoutUserInput = {
 }
 
 export type SellerUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
   businessType?: Prisma.EnumBUSINESS_TYPEFieldUpdateOperationsInput | $Enums.BUSINESS_TYPE
@@ -669,6 +694,7 @@ export type SellerUpdateWithoutUserInput = {
 }
 
 export type SellerUncheckedUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
   businessType?: Prisma.EnumBUSINESS_TYPEFieldUpdateOperationsInput | $Enums.BUSINESS_TYPE
@@ -684,6 +710,7 @@ export type SellerUncheckedUpdateWithoutUserInput = {
 }
 
 export type SellerCreateWithoutSellerAddressInput = {
+  id?: string
   businessName: string
   status?: $Enums.SELLER_STATUS
   businessType?: $Enums.BUSINESS_TYPE
@@ -699,6 +726,7 @@ export type SellerCreateWithoutSellerAddressInput = {
 }
 
 export type SellerUncheckedCreateWithoutSellerAddressInput = {
+  id?: string
   userId: string
   businessName: string
   status?: $Enums.SELLER_STATUS
@@ -730,6 +758,7 @@ export type SellerUpdateToOneWithWhereWithoutSellerAddressInput = {
 }
 
 export type SellerUpdateWithoutSellerAddressInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
   businessType?: Prisma.EnumBUSINESS_TYPEFieldUpdateOperationsInput | $Enums.BUSINESS_TYPE
@@ -745,6 +774,7 @@ export type SellerUpdateWithoutSellerAddressInput = {
 }
 
 export type SellerUncheckedUpdateWithoutSellerAddressInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
@@ -760,6 +790,7 @@ export type SellerUncheckedUpdateWithoutSellerAddressInput = {
 }
 
 export type SellerCreateWithoutSellerDocumentInput = {
+  id?: string
   businessName: string
   status?: $Enums.SELLER_STATUS
   businessType?: $Enums.BUSINESS_TYPE
@@ -775,6 +806,7 @@ export type SellerCreateWithoutSellerDocumentInput = {
 }
 
 export type SellerUncheckedCreateWithoutSellerDocumentInput = {
+  id?: string
   userId: string
   businessName: string
   status?: $Enums.SELLER_STATUS
@@ -806,6 +838,7 @@ export type SellerUpdateToOneWithWhereWithoutSellerDocumentInput = {
 }
 
 export type SellerUpdateWithoutSellerDocumentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
   businessType?: Prisma.EnumBUSINESS_TYPEFieldUpdateOperationsInput | $Enums.BUSINESS_TYPE
@@ -821,6 +854,7 @@ export type SellerUpdateWithoutSellerDocumentInput = {
 }
 
 export type SellerUncheckedUpdateWithoutSellerDocumentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
@@ -876,6 +910,7 @@ export type SellerCountOutputTypeCountSellerDocumentArgs<ExtArgs extends runtime
 
 
 export type SellerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   userId?: boolean
   businessName?: boolean
   status?: boolean
@@ -894,6 +929,7 @@ export type SellerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
 }, ExtArgs["result"]["seller"]>
 
 export type SellerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   userId?: boolean
   businessName?: boolean
   status?: boolean
@@ -909,6 +945,7 @@ export type SellerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
 }, ExtArgs["result"]["seller"]>
 
 export type SellerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   userId?: boolean
   businessName?: boolean
   status?: boolean
@@ -924,6 +961,7 @@ export type SellerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 }, ExtArgs["result"]["seller"]>
 
 export type SellerSelectScalar = {
+  id?: boolean
   userId?: boolean
   businessName?: boolean
   status?: boolean
@@ -937,7 +975,7 @@ export type SellerSelectScalar = {
   updatedAt?: boolean
 }
 
-export type SellerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"userId" | "businessName" | "status" | "businessType" | "verificationStatus" | "rating" | "totalReviews" | "fraudScore" | "isDeleted" | "createdAt" | "updatedAt", ExtArgs["result"]["seller"]>
+export type SellerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "businessName" | "status" | "businessType" | "verificationStatus" | "rating" | "totalReviews" | "fraudScore" | "isDeleted" | "createdAt" | "updatedAt", ExtArgs["result"]["seller"]>
 export type SellerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   SellerAddress?: boolean | Prisma.Seller$SellerAddressArgs<ExtArgs>
@@ -959,6 +997,7 @@ export type $SellerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     SellerDocument: Prisma.$SellerDocumentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
+    id: string
     userId: string
     businessName: string
     status: $Enums.SELLER_STATUS
@@ -1053,8 +1092,8 @@ export interface SellerDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * // Get first 10 Sellers
    * const sellers = await prisma.seller.findMany({ take: 10 })
    * 
-   * // Only select the `userId`
-   * const sellerWithUserIdOnly = await prisma.seller.findMany({ select: { userId: true } })
+   * // Only select the `id`
+   * const sellerWithIdOnly = await prisma.seller.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends SellerFindManyArgs>(args?: Prisma.SelectSubset<T, SellerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SellerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1098,9 +1137,9 @@ export interface SellerDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   ]
    * })
    * 
-   * // Create many Sellers and only return the `userId`
-   * const sellerWithUserIdOnly = await prisma.seller.createManyAndReturn({
-   *   select: { userId: true },
+   * // Create many Sellers and only return the `id`
+   * const sellerWithIdOnly = await prisma.seller.createManyAndReturn({
+   *   select: { id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -1189,9 +1228,9 @@ export interface SellerDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   ]
    * })
    * 
-   * // Update zero or more Sellers and only return the `userId`
-   * const sellerWithUserIdOnly = await prisma.seller.updateManyAndReturn({
-   *   select: { userId: true },
+   * // Update zero or more Sellers and only return the `id`
+   * const sellerWithIdOnly = await prisma.seller.updateManyAndReturn({
+   *   select: { id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1396,6 +1435,7 @@ export interface Prisma__SellerClient<T, Null = never, ExtArgs extends runtime.T
  * Fields of the Seller model
  */
 export interface SellerFieldRefs {
+  readonly id: Prisma.FieldRef<"Seller", 'String'>
   readonly userId: Prisma.FieldRef<"Seller", 'String'>
   readonly businessName: Prisma.FieldRef<"Seller", 'String'>
   readonly status: Prisma.FieldRef<"Seller", 'SELLER_STATUS'>

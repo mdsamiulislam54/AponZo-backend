@@ -6,9 +6,8 @@ import { prisma } from "../lib/prisma";
 
 const authorization = (...roles: string[]) => {
     return async (req: Request, res: Response, next: NextFunction) => {
-        console.log("Authorization Middleware Invoked");
+        console.log("Authorization middleware called with roles:", roles);
         const sessionToken = cookieUtils.getCookie(req, "better-auth.session-token");
-        console.log("Session Token:", sessionToken);
         if (!sessionToken) throw new AppError(status.UNAUTHORIZED, "No session token found in cookies");
 
         if (sessionToken) {
@@ -39,10 +38,10 @@ const authorization = (...roles: string[]) => {
                     res.setHeader("X-Time-Remaining", timeRemaining.toString());
                 }
 
-                if(user.status === "INACTIVE" || user.isDeleted === true) throw new AppError(status.UNAUTHORIZED, "User is inactive or deleted");
+                if (user.status === "INACTIVE" || user.isDeleted === true) throw new AppError(status.UNAUTHORIZED, "User is inactive or deleted");
 
 
-                if(roles.length > 0 && !roles.includes(user.role)) {
+                if (roles.length > 0 && !roles.includes(user.role)) {
                     throw new AppError(status.FORBIDDEN, "You are not authorized to perform this action");
                 }
 
@@ -52,11 +51,12 @@ const authorization = (...roles: string[]) => {
                     name: user.name,
                     role: user.role
                 };
-               
+
             }
         };
 
         next();
-    }}
+    }
+}
 
 export { authorization }

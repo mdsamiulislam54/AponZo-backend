@@ -7,14 +7,4 @@ export interface ISellerProfileUpdate {
     
 }
 
-export interface ISellerAddress {
-    name: string;
-    phone: string;
-    address: string;
-    city: string;
-    district: string;
-    country: string;
-    zipCode: string;
-    type: SELLER_ADDRESS_TYPE;
-    isDefault?: boolean;
-}
+

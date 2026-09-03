@@ -1,6 +1,6 @@
 import { prisma } from "../../lib/prisma";
-import { sellerAddressUpdateType, sellerDocumentType, sellerDocumentUpdateType } from "./seller.zod.validation";
-import { ISellerAddress, ISellerProfileUpdate } from "./sellers.validation";
+import { sellerAddressType, sellerAddressUpdateType, sellerDocumentType, sellerDocumentUpdateType } from "./seller.zod.validation";
+import {  ISellerProfileUpdate } from "./sellers.validation";
 
 const getSellerProfile = async (userId: string) => {
     return await prisma.seller.findUnique({
@@ -41,22 +41,17 @@ const getSellerProfile = async (userId: string) => {
     });
 };
 
-const sellerProfileUpdate = async (payload: ISellerProfileUpdate, userId: string) => {
-    const { businessName, businessType } = payload;
-    await prisma.seller.update({
+const sellerProfileUpdate = async (payload: Partial<ISellerProfileUpdate>, id: string) => {
+   return await prisma.seller.update({
         where: {
-            userId: userId
+            userId: id
         },
-        data: {
-            businessName,
-            businessType
-        }
+        data: {...payload}
     });
 
-    return { success: true, message: "Seller profile updated successfully" }
 };
 
-const createSellerAddress = async (userId: string, payload: ISellerAddress) => {
+const createSellerAddress = async (userId: string, payload: sellerAddressType) => {
     const address = await prisma.sellerAddress.create({
         data: {
             ...payload,

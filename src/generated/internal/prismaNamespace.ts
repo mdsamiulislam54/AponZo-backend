@@ -1045,6 +1045,7 @@ export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[k
 
 
 export const SellerScalarFieldEnum = {
+  id: 'id',
   userId: 'userId',
   businessName: 'businessName',
   status: 'status',

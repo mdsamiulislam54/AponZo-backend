@@ -8,6 +8,7 @@ import status from "http-status";
 
 const getSellerProfile = catchAsync(async (req: Request, res: Response) => {
     const userId = req.user?.id;
+    console.log(userId)
     if (!userId) {
         return res.status(status.BAD_REQUEST).json({
             success: false,
@@ -26,16 +27,9 @@ const getSellerProfile = catchAsync(async (req: Request, res: Response) => {
 })
 
 const sellerProfileUpdate = catchAsync(async (req: Request, res: Response) => {
-    const userId = req.user?.id;
-    if (!userId) {
-        return res.status(status.BAD_REQUEST).json({
-            success: false,
-            status: status.BAD_REQUEST,
-            message: "User id is required"
-        })
-    }
-
-    const sellerProfile = await sellerService.sellerProfileUpdate(userId, req.body);
+    const id = req.user?.id as string
+    console.log("User ID for profile update:", id,req.body);
+    const sellerProfile = await sellerService.sellerProfileUpdate(req.body,id);
     sendResponse(res, {
         success: true,
         status: status.OK,

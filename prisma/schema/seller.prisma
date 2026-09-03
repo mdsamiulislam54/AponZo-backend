@@ -1,5 +1,6 @@
 
 model Seller {
+  id                 String               @id @default(cuid())
   userId             String               @unique
   businessName       String               @unique
   status             SELLER_STATUS        @default(PENDING)

@@ -8,8 +8,8 @@ export const sellerAddressSchema = z.object({
     city: z.string().min(1, { message: "City is required" }),
     district: z.string().min(1, { message: "District is required" }),
     country: z.string().min(1, { message: "Country is required" }),
-    zipcode: z.string().min(1, { message: "Postal Code is required" }),
-    type: z.enum(["PICKUP", "RETURN"]).optional(),
+    zipCode: z.string().min(1, { message: "Postal Code is required" }),
+    type: z.enum(["PICKUP", "RETURN"]).optional().optional(),
     isDefault: z.boolean().optional()
 })
 
