@@ -61,7 +61,7 @@ const createSellerAddress = async (userId: string, payload: sellerAddressType) =
     return address;
 }
 
-const updateSellerAddress = async (addressId: string, payload: sellerAddressUpdateType) => {
+const updateSellerAddress = async (addressId: string, payload: Partial<sellerAddressUpdateType>) => {
     const address = await prisma.sellerAddress.update({
         where: {
             id: addressId
@@ -81,6 +81,7 @@ const deleteSellerAddress = async (addressId: string) => {
     });
     return address;
 }
+
 
 const getSellerAddress = async (userId: string) => {
     const address = await prisma.sellerAddress.findMany({

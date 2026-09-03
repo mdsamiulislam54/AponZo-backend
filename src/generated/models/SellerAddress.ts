@@ -277,10 +277,10 @@ export type SellerAddressOrderByWithRelationInput = {
 
 export type SellerAddressWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  sellerId?: string
   AND?: Prisma.SellerAddressWhereInput | Prisma.SellerAddressWhereInput[]
   OR?: Prisma.SellerAddressWhereInput[]
   NOT?: Prisma.SellerAddressWhereInput | Prisma.SellerAddressWhereInput[]
+  sellerId?: Prisma.StringFilter<"SellerAddress"> | string
   type?: Prisma.EnumADDRESS_TYPEFilter<"SellerAddress"> | $Enums.ADDRESS_TYPE
   name?: Prisma.StringFilter<"SellerAddress"> | string
   phone?: Prisma.StringFilter<"SellerAddress"> | string
@@ -294,7 +294,7 @@ export type SellerAddressWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"SellerAddress"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SellerAddress"> | Date | string
   Seller?: Prisma.XOR<Prisma.SellerScalarRelationFilter, Prisma.SellerWhereInput>
-}, "id" | "sellerId">
+}, "id">
 
 export type SellerAddressOrderByWithAggregationInput = {
   id?: Prisma.SortOrder

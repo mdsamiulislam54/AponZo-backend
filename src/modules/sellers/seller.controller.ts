@@ -58,15 +58,9 @@ const createSellerAddress = catchAsync(async (req: Request, res: Response) => {
 })
 
 const updateSellerAddress = catchAsync(async (req: Request, res: Response) => {
-    const userId = req.user?.id;
-    if (!userId) {
-        return res.status(status.BAD_REQUEST).json({
-            success: false,
-            status: status.BAD_REQUEST,
-            message: "User id is required"
-        })
-    }
-    const sellerAddress = await sellerService.updateSellerAddress(userId, req.body);
+    const addressId = req.params?.id as string;
+  
+    const sellerAddress = await sellerService.updateSellerAddress(addressId, req.body);
     sendResponse(res, {
         success: true,
         status: status.OK,
@@ -96,15 +90,9 @@ const getSellerAddress = catchAsync(async (req: Request, res: Response) => {
 })
 
 const deleteSellerAddress = catchAsync(async (req: Request, res: Response) => {
-    const userId = req.user?.id;
-    if (!userId) {
-        return res.status(status.BAD_REQUEST).json({
-            success: false,
-            status: status.BAD_REQUEST,
-            message: "User id is required"
-        })
-    }
-    const sellerAddress = await sellerService.deleteSellerAddress(userId);
+    const addressId = req.params?.id as string;
+  
+    const sellerAddress = await sellerService.deleteSellerAddress(addressId);
     sendResponse(res, {
         success: true,
         status: status.OK,
@@ -152,7 +140,7 @@ const getSellerDocument = catchAsync(async (req: Request, res: Response) => {
 })
 
 const updateSellerDocument = catchAsync(async (req: Request, res: Response) => {
-    const userId = req.user?.id;
+    const userId = req.params?.id as string;
     if (!userId) {
         return res.status(status.BAD_REQUEST).json({
             success: false,
@@ -170,7 +158,7 @@ const updateSellerDocument = catchAsync(async (req: Request, res: Response) => {
 })
 
 const deleteSellerDocument = catchAsync(async (req: Request, res: Response) => {
-    const userId = req.user?.id;
+    const userId = req.params?.id as string;
     if (!userId) {
         return res.status(status.BAD_REQUEST).json({
             success: false,

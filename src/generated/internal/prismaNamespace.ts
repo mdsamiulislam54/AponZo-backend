@@ -1087,6 +1087,7 @@ export const SellerDocumentScalarFieldEnum = {
   sellerId: 'sellerId',
   documentType: 'documentType',
   status: 'status',
+  documentNumber: 'documentNumber',
   rejectionReason: 'rejectionReason',
   reviewedBy: 'reviewedBy',
   reviewedAt: 'reviewedAt',

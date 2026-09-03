@@ -1,6 +1,6 @@
 model SellerAddress {
   id        String        @id @default(cuid())
-  sellerId  String        @unique
+  sellerId  String        
   type      ADDRESS_TYPE  @default(PICKUP)
   name      String
   phone     String

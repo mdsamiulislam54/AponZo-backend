@@ -1,6 +1,5 @@
 import z from "zod";
-type BUSINESS_TYPE = "INDIVIDUAL" | "COMPANY" | "PARTNERSHIP";
-type SELLER_ADDRESS_TYPE = "PICKUP" | "RETURN" 
+
 export const sellerAddressSchema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
     phone: z.string().min(1, { message: "Phone is required" }),
@@ -25,7 +24,7 @@ export const sellerAddressSchemaUpdate = z.object({
     isDefault: z.boolean().optional()
 })
 export const sellerDocumentSchema = z.object({
-    type: z.string().min(1, { message: "Document Type is required" }),
+    documentType: z.enum(["NID", "PASSPORT", "TRADE_LICENSE", "OTHER","TIN","BIN"]).optional(),
     documentNumber: z.string().min(1, { message: "Document Number is required" }),
     documentUrl: z.string().min(1, { message: "Document URL is required" }),
     status: z.enum(["PENDING", "APPROVED", "REJECTED"]).optional(),

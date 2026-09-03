@@ -3,6 +3,7 @@ model SellerDocument {
   sellerId        String
   documentType    DOCUMENT_TYPE    @default(OTHER)
   status          DOCUMENT_STATUS  @default(PENDING)
+  documentNumber  String?
   rejectionReason String?
   reviewedBy      String?
   reviewedAt      DateTime?

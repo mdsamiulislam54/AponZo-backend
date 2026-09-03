@@ -29,6 +29,7 @@ export type SellerDocumentMinAggregateOutputType = {
   sellerId: string | null
   documentType: $Enums.DOCUMENT_TYPE | null
   status: $Enums.DOCUMENT_STATUS | null
+  documentNumber: string | null
   rejectionReason: string | null
   reviewedBy: string | null
   reviewedAt: Date | null
@@ -43,6 +44,7 @@ export type SellerDocumentMaxAggregateOutputType = {
   sellerId: string | null
   documentType: $Enums.DOCUMENT_TYPE | null
   status: $Enums.DOCUMENT_STATUS | null
+  documentNumber: string | null
   rejectionReason: string | null
   reviewedBy: string | null
   reviewedAt: Date | null
@@ -57,6 +59,7 @@ export type SellerDocumentCountAggregateOutputType = {
   sellerId: number
   documentType: number
   status: number
+  documentNumber: number
   rejectionReason: number
   reviewedBy: number
   reviewedAt: number
@@ -73,6 +76,7 @@ export type SellerDocumentMinAggregateInputType = {
   sellerId?: true
   documentType?: true
   status?: true
+  documentNumber?: true
   rejectionReason?: true
   reviewedBy?: true
   reviewedAt?: true
@@ -87,6 +91,7 @@ export type SellerDocumentMaxAggregateInputType = {
   sellerId?: true
   documentType?: true
   status?: true
+  documentNumber?: true
   rejectionReason?: true
   reviewedBy?: true
   reviewedAt?: true
@@ -101,6 +106,7 @@ export type SellerDocumentCountAggregateInputType = {
   sellerId?: true
   documentType?: true
   status?: true
+  documentNumber?: true
   rejectionReason?: true
   reviewedBy?: true
   reviewedAt?: true
@@ -188,6 +194,7 @@ export type SellerDocumentGroupByOutputType = {
   sellerId: string
   documentType: $Enums.DOCUMENT_TYPE
   status: $Enums.DOCUMENT_STATUS
+  documentNumber: string | null
   rejectionReason: string | null
   reviewedBy: string | null
   reviewedAt: Date | null
@@ -223,6 +230,7 @@ export type SellerDocumentWhereInput = {
   sellerId?: Prisma.StringFilter<"SellerDocument"> | string
   documentType?: Prisma.EnumDOCUMENT_TYPEFilter<"SellerDocument"> | $Enums.DOCUMENT_TYPE
   status?: Prisma.EnumDOCUMENT_STATUSFilter<"SellerDocument"> | $Enums.DOCUMENT_STATUS
+  documentNumber?: Prisma.StringNullableFilter<"SellerDocument"> | string | null
   rejectionReason?: Prisma.StringNullableFilter<"SellerDocument"> | string | null
   reviewedBy?: Prisma.StringNullableFilter<"SellerDocument"> | string | null
   reviewedAt?: Prisma.DateTimeNullableFilter<"SellerDocument"> | Date | string | null
@@ -238,6 +246,7 @@ export type SellerDocumentOrderByWithRelationInput = {
   sellerId?: Prisma.SortOrder
   documentType?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  documentNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   rejectionReason?: Prisma.SortOrderInput | Prisma.SortOrder
   reviewedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   reviewedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -256,6 +265,7 @@ export type SellerDocumentWhereUniqueInput = Prisma.AtLeast<{
   sellerId?: Prisma.StringFilter<"SellerDocument"> | string
   documentType?: Prisma.EnumDOCUMENT_TYPEFilter<"SellerDocument"> | $Enums.DOCUMENT_TYPE
   status?: Prisma.EnumDOCUMENT_STATUSFilter<"SellerDocument"> | $Enums.DOCUMENT_STATUS
+  documentNumber?: Prisma.StringNullableFilter<"SellerDocument"> | string | null
   rejectionReason?: Prisma.StringNullableFilter<"SellerDocument"> | string | null
   reviewedBy?: Prisma.StringNullableFilter<"SellerDocument"> | string | null
   reviewedAt?: Prisma.DateTimeNullableFilter<"SellerDocument"> | Date | string | null
@@ -271,6 +281,7 @@ export type SellerDocumentOrderByWithAggregationInput = {
   sellerId?: Prisma.SortOrder
   documentType?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  documentNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   rejectionReason?: Prisma.SortOrderInput | Prisma.SortOrder
   reviewedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   reviewedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -291,6 +302,7 @@ export type SellerDocumentScalarWhereWithAggregatesInput = {
   sellerId?: Prisma.StringWithAggregatesFilter<"SellerDocument"> | string
   documentType?: Prisma.EnumDOCUMENT_TYPEWithAggregatesFilter<"SellerDocument"> | $Enums.DOCUMENT_TYPE
   status?: Prisma.EnumDOCUMENT_STATUSWithAggregatesFilter<"SellerDocument"> | $Enums.DOCUMENT_STATUS
+  documentNumber?: Prisma.StringNullableWithAggregatesFilter<"SellerDocument"> | string | null
   rejectionReason?: Prisma.StringNullableWithAggregatesFilter<"SellerDocument"> | string | null
   reviewedBy?: Prisma.StringNullableWithAggregatesFilter<"SellerDocument"> | string | null
   reviewedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"SellerDocument"> | Date | string | null
@@ -304,6 +316,7 @@ export type SellerDocumentCreateInput = {
   id?: string
   documentType?: $Enums.DOCUMENT_TYPE
   status?: $Enums.DOCUMENT_STATUS
+  documentNumber?: string | null
   rejectionReason?: string | null
   reviewedBy?: string | null
   reviewedAt?: Date | string | null
@@ -319,6 +332,7 @@ export type SellerDocumentUncheckedCreateInput = {
   sellerId: string
   documentType?: $Enums.DOCUMENT_TYPE
   status?: $Enums.DOCUMENT_STATUS
+  documentNumber?: string | null
   rejectionReason?: string | null
   reviewedBy?: string | null
   reviewedAt?: Date | string | null
@@ -332,6 +346,7 @@ export type SellerDocumentUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.EnumDOCUMENT_TYPEFieldUpdateOperationsInput | $Enums.DOCUMENT_TYPE
   status?: Prisma.EnumDOCUMENT_STATUSFieldUpdateOperationsInput | $Enums.DOCUMENT_STATUS
+  documentNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reviewedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -347,6 +362,7 @@ export type SellerDocumentUncheckedUpdateInput = {
   sellerId?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.EnumDOCUMENT_TYPEFieldUpdateOperationsInput | $Enums.DOCUMENT_TYPE
   status?: Prisma.EnumDOCUMENT_STATUSFieldUpdateOperationsInput | $Enums.DOCUMENT_STATUS
+  documentNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reviewedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -361,6 +377,7 @@ export type SellerDocumentCreateManyInput = {
   sellerId: string
   documentType?: $Enums.DOCUMENT_TYPE
   status?: $Enums.DOCUMENT_STATUS
+  documentNumber?: string | null
   rejectionReason?: string | null
   reviewedBy?: string | null
   reviewedAt?: Date | string | null
@@ -374,6 +391,7 @@ export type SellerDocumentUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.EnumDOCUMENT_TYPEFieldUpdateOperationsInput | $Enums.DOCUMENT_TYPE
   status?: Prisma.EnumDOCUMENT_STATUSFieldUpdateOperationsInput | $Enums.DOCUMENT_STATUS
+  documentNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reviewedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -388,6 +406,7 @@ export type SellerDocumentUncheckedUpdateManyInput = {
   sellerId?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.EnumDOCUMENT_TYPEFieldUpdateOperationsInput | $Enums.DOCUMENT_TYPE
   status?: Prisma.EnumDOCUMENT_STATUSFieldUpdateOperationsInput | $Enums.DOCUMENT_STATUS
+  documentNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reviewedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -412,6 +431,7 @@ export type SellerDocumentCountOrderByAggregateInput = {
   sellerId?: Prisma.SortOrder
   documentType?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  documentNumber?: Prisma.SortOrder
   rejectionReason?: Prisma.SortOrder
   reviewedBy?: Prisma.SortOrder
   reviewedAt?: Prisma.SortOrder
@@ -426,6 +446,7 @@ export type SellerDocumentMaxOrderByAggregateInput = {
   sellerId?: Prisma.SortOrder
   documentType?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  documentNumber?: Prisma.SortOrder
   rejectionReason?: Prisma.SortOrder
   reviewedBy?: Prisma.SortOrder
   reviewedAt?: Prisma.SortOrder
@@ -440,6 +461,7 @@ export type SellerDocumentMinOrderByAggregateInput = {
   sellerId?: Prisma.SortOrder
   documentType?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  documentNumber?: Prisma.SortOrder
   rejectionReason?: Prisma.SortOrder
   reviewedBy?: Prisma.SortOrder
   reviewedAt?: Prisma.SortOrder
@@ -503,6 +525,7 @@ export type SellerDocumentCreateWithoutSellerInput = {
   id?: string
   documentType?: $Enums.DOCUMENT_TYPE
   status?: $Enums.DOCUMENT_STATUS
+  documentNumber?: string | null
   rejectionReason?: string | null
   reviewedBy?: string | null
   reviewedAt?: Date | string | null
@@ -516,6 +539,7 @@ export type SellerDocumentUncheckedCreateWithoutSellerInput = {
   id?: string
   documentType?: $Enums.DOCUMENT_TYPE
   status?: $Enums.DOCUMENT_STATUS
+  documentNumber?: string | null
   rejectionReason?: string | null
   reviewedBy?: string | null
   reviewedAt?: Date | string | null
@@ -559,6 +583,7 @@ export type SellerDocumentScalarWhereInput = {
   sellerId?: Prisma.StringFilter<"SellerDocument"> | string
   documentType?: Prisma.EnumDOCUMENT_TYPEFilter<"SellerDocument"> | $Enums.DOCUMENT_TYPE
   status?: Prisma.EnumDOCUMENT_STATUSFilter<"SellerDocument"> | $Enums.DOCUMENT_STATUS
+  documentNumber?: Prisma.StringNullableFilter<"SellerDocument"> | string | null
   rejectionReason?: Prisma.StringNullableFilter<"SellerDocument"> | string | null
   reviewedBy?: Prisma.StringNullableFilter<"SellerDocument"> | string | null
   reviewedAt?: Prisma.DateTimeNullableFilter<"SellerDocument"> | Date | string | null
@@ -572,6 +597,7 @@ export type SellerDocumentCreateManySellerInput = {
   id?: string
   documentType?: $Enums.DOCUMENT_TYPE
   status?: $Enums.DOCUMENT_STATUS
+  documentNumber?: string | null
   rejectionReason?: string | null
   reviewedBy?: string | null
   reviewedAt?: Date | string | null
@@ -585,6 +611,7 @@ export type SellerDocumentUpdateWithoutSellerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.EnumDOCUMENT_TYPEFieldUpdateOperationsInput | $Enums.DOCUMENT_TYPE
   status?: Prisma.EnumDOCUMENT_STATUSFieldUpdateOperationsInput | $Enums.DOCUMENT_STATUS
+  documentNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reviewedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -598,6 +625,7 @@ export type SellerDocumentUncheckedUpdateWithoutSellerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.EnumDOCUMENT_TYPEFieldUpdateOperationsInput | $Enums.DOCUMENT_TYPE
   status?: Prisma.EnumDOCUMENT_STATUSFieldUpdateOperationsInput | $Enums.DOCUMENT_STATUS
+  documentNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reviewedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -611,6 +639,7 @@ export type SellerDocumentUncheckedUpdateManyWithoutSellerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.EnumDOCUMENT_TYPEFieldUpdateOperationsInput | $Enums.DOCUMENT_TYPE
   status?: Prisma.EnumDOCUMENT_STATUSFieldUpdateOperationsInput | $Enums.DOCUMENT_STATUS
+  documentNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reviewedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -627,6 +656,7 @@ export type SellerDocumentSelect<ExtArgs extends runtime.Types.Extensions.Intern
   sellerId?: boolean
   documentType?: boolean
   status?: boolean
+  documentNumber?: boolean
   rejectionReason?: boolean
   reviewedBy?: boolean
   reviewedAt?: boolean
@@ -642,6 +672,7 @@ export type SellerDocumentSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   sellerId?: boolean
   documentType?: boolean
   status?: boolean
+  documentNumber?: boolean
   rejectionReason?: boolean
   reviewedBy?: boolean
   reviewedAt?: boolean
@@ -657,6 +688,7 @@ export type SellerDocumentSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   sellerId?: boolean
   documentType?: boolean
   status?: boolean
+  documentNumber?: boolean
   rejectionReason?: boolean
   reviewedBy?: boolean
   reviewedAt?: boolean
@@ -672,6 +704,7 @@ export type SellerDocumentSelectScalar = {
   sellerId?: boolean
   documentType?: boolean
   status?: boolean
+  documentNumber?: boolean
   rejectionReason?: boolean
   reviewedBy?: boolean
   reviewedAt?: boolean
@@ -681,7 +714,7 @@ export type SellerDocumentSelectScalar = {
   updatedAt?: boolean
 }
 
-export type SellerDocumentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "sellerId" | "documentType" | "status" | "rejectionReason" | "reviewedBy" | "reviewedAt" | "documentUrl" | "isDeleted" | "createdAt" | "updatedAt", ExtArgs["result"]["sellerDocument"]>
+export type SellerDocumentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "sellerId" | "documentType" | "status" | "documentNumber" | "rejectionReason" | "reviewedBy" | "reviewedAt" | "documentUrl" | "isDeleted" | "createdAt" | "updatedAt", ExtArgs["result"]["sellerDocument"]>
 export type SellerDocumentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Seller?: boolean | Prisma.SellerDefaultArgs<ExtArgs>
 }
@@ -702,6 +735,7 @@ export type $SellerDocumentPayload<ExtArgs extends runtime.Types.Extensions.Inte
     sellerId: string
     documentType: $Enums.DOCUMENT_TYPE
     status: $Enums.DOCUMENT_STATUS
+    documentNumber: string | null
     rejectionReason: string | null
     reviewedBy: string | null
     reviewedAt: Date | null
@@ -1137,6 +1171,7 @@ export interface SellerDocumentFieldRefs {
   readonly sellerId: Prisma.FieldRef<"SellerDocument", 'String'>
   readonly documentType: Prisma.FieldRef<"SellerDocument", 'DOCUMENT_TYPE'>
   readonly status: Prisma.FieldRef<"SellerDocument", 'DOCUMENT_STATUS'>
+  readonly documentNumber: Prisma.FieldRef<"SellerDocument", 'String'>
   readonly rejectionReason: Prisma.FieldRef<"SellerDocument", 'String'>
   readonly reviewedBy: Prisma.FieldRef<"SellerDocument", 'String'>
   readonly reviewedAt: Prisma.FieldRef<"SellerDocument", 'DateTime'>
