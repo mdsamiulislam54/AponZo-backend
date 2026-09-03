@@ -1,0 +1,31 @@
+model SellerDocument {
+  id              String           @id @default(cuid())
+  sellerId        String
+  documentType    DOCUMENT_TYPE    @default(OTHER)
+  status          DOCUMENT_STATUS  @default(PENDING)
+  rejectionReason String?
+  reviewedBy      String?
+  reviewedAt      DateTime?
+  documentUrl     String
+  isDeleted       Boolean          @default(false)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  Seller          Seller          @relation(fields: [sellerId], references: [userId], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("seller_documents")
+}
+
+enum DOCUMENT_TYPE {
+    NID
+    PASSPORT
+    TRADE_LICENSE
+    TIN
+    BIN
+    OTHER
+}
+
+enum DOCUMENT_STATUS {
+    APPROVED
+    PENDING
+    REJECTED
+}

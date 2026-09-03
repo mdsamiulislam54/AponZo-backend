@@ -11,7 +11,7 @@ const getCookie = (req: any, key: string) => {
 }
 
 const setBetterAuthToken = (res: Response, token: string) => {
-    res.cookie('better-auth-token', token, {
+    res.cookie('better-auth.session-token', token, {
         httpOnly: true,
         secure: envConfig.env === 'production',
         sameSite: 'strict',

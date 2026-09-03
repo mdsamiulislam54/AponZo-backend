@@ -55,7 +55,9 @@ export const ModelName = {
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification',
-  Seller: 'Seller'
+  Seller: 'Seller',
+  SellerAddress: 'SellerAddress',
+  SellerDocument: 'SellerDocument'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -153,6 +155,43 @@ export const SellerScalarFieldEnum = {
 } as const
 
 export type SellerScalarFieldEnum = (typeof SellerScalarFieldEnum)[keyof typeof SellerScalarFieldEnum]
+
+
+export const SellerAddressScalarFieldEnum = {
+  id: 'id',
+  sellerId: 'sellerId',
+  type: 'type',
+  name: 'name',
+  phone: 'phone',
+  address: 'address',
+  city: 'city',
+  district: 'district',
+  country: 'country',
+  zipCode: 'zipCode',
+  isDefault: 'isDefault',
+  isDeleted: 'isDeleted',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SellerAddressScalarFieldEnum = (typeof SellerAddressScalarFieldEnum)[keyof typeof SellerAddressScalarFieldEnum]
+
+
+export const SellerDocumentScalarFieldEnum = {
+  id: 'id',
+  sellerId: 'sellerId',
+  documentType: 'documentType',
+  status: 'status',
+  rejectionReason: 'rejectionReason',
+  reviewedBy: 'reviewedBy',
+  reviewedAt: 'reviewedAt',
+  documentUrl: 'documentUrl',
+  isDeleted: 'isDeleted',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SellerDocumentScalarFieldEnum = (typeof SellerDocumentScalarFieldEnum)[keyof typeof SellerDocumentScalarFieldEnum]
 
 
 export const SortOrder = {

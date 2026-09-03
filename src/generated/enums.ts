@@ -52,3 +52,32 @@ export const VERIFICATION_STATUS = {
 } as const
 
 export type VERIFICATION_STATUS = (typeof VERIFICATION_STATUS)[keyof typeof VERIFICATION_STATUS]
+
+
+export const ADDRESS_TYPE = {
+  PICKUP: 'PICKUP',
+  RETURN: 'RETURN'
+} as const
+
+export type ADDRESS_TYPE = (typeof ADDRESS_TYPE)[keyof typeof ADDRESS_TYPE]
+
+
+export const DOCUMENT_TYPE = {
+  NID: 'NID',
+  PASSPORT: 'PASSPORT',
+  TRADE_LICENSE: 'TRADE_LICENSE',
+  TIN: 'TIN',
+  BIN: 'BIN',
+  OTHER: 'OTHER'
+} as const
+
+export type DOCUMENT_TYPE = (typeof DOCUMENT_TYPE)[keyof typeof DOCUMENT_TYPE]
+
+
+export const DOCUMENT_STATUS = {
+  APPROVED: 'APPROVED',
+  PENDING: 'PENDING',
+  REJECTED: 'REJECTED'
+} as const
+
+export type DOCUMENT_STATUS = (typeof DOCUMENT_STATUS)[keyof typeof DOCUMENT_STATUS]

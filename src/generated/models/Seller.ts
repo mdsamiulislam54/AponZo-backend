@@ -273,6 +273,8 @@ export type SellerWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Seller"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Seller"> | Date | string
   User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  SellerAddress?: Prisma.SellerAddressListRelationFilter
+  SellerDocument?: Prisma.SellerDocumentListRelationFilter
 }
 
 export type SellerOrderByWithRelationInput = {
@@ -288,6 +290,8 @@ export type SellerOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   User?: Prisma.UserOrderByWithRelationInput
+  SellerAddress?: Prisma.SellerAddressOrderByRelationAggregateInput
+  SellerDocument?: Prisma.SellerDocumentOrderByRelationAggregateInput
 }
 
 export type SellerWhereUniqueInput = Prisma.AtLeast<{
@@ -306,6 +310,8 @@ export type SellerWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Seller"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Seller"> | Date | string
   User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  SellerAddress?: Prisma.SellerAddressListRelationFilter
+  SellerDocument?: Prisma.SellerDocumentListRelationFilter
 }, "userId" | "businessName">
 
 export type SellerOrderByWithAggregationInput = {
@@ -356,6 +362,8 @@ export type SellerCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   User: Prisma.UserCreateNestedOneWithoutSellerInput
+  SellerAddress?: Prisma.SellerAddressCreateNestedManyWithoutSellerInput
+  SellerDocument?: Prisma.SellerDocumentCreateNestedManyWithoutSellerInput
 }
 
 export type SellerUncheckedCreateInput = {
@@ -370,6 +378,8 @@ export type SellerUncheckedCreateInput = {
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  SellerAddress?: Prisma.SellerAddressUncheckedCreateNestedManyWithoutSellerInput
+  SellerDocument?: Prisma.SellerDocumentUncheckedCreateNestedManyWithoutSellerInput
 }
 
 export type SellerUpdateInput = {
@@ -384,6 +394,8 @@ export type SellerUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   User?: Prisma.UserUpdateOneRequiredWithoutSellerNestedInput
+  SellerAddress?: Prisma.SellerAddressUpdateManyWithoutSellerNestedInput
+  SellerDocument?: Prisma.SellerDocumentUpdateManyWithoutSellerNestedInput
 }
 
 export type SellerUncheckedUpdateInput = {
@@ -398,6 +410,8 @@ export type SellerUncheckedUpdateInput = {
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  SellerAddress?: Prisma.SellerAddressUncheckedUpdateManyWithoutSellerNestedInput
+  SellerDocument?: Prisma.SellerDocumentUncheckedUpdateManyWithoutSellerNestedInput
 }
 
 export type SellerCreateManyInput = {
@@ -500,6 +514,11 @@ export type SellerSumOrderByAggregateInput = {
   fraudScore?: Prisma.SortOrder
 }
 
+export type SellerScalarRelationFilter = {
+  is?: Prisma.SellerWhereInput
+  isNot?: Prisma.SellerWhereInput
+}
+
 export type SellerCreateNestedOneWithoutUserInput = {
   create?: Prisma.XOR<Prisma.SellerCreateWithoutUserInput, Prisma.SellerUncheckedCreateWithoutUserInput>
   connectOrCreate?: Prisma.SellerCreateOrConnectWithoutUserInput
@@ -560,6 +579,34 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type SellerCreateNestedOneWithoutSellerAddressInput = {
+  create?: Prisma.XOR<Prisma.SellerCreateWithoutSellerAddressInput, Prisma.SellerUncheckedCreateWithoutSellerAddressInput>
+  connectOrCreate?: Prisma.SellerCreateOrConnectWithoutSellerAddressInput
+  connect?: Prisma.SellerWhereUniqueInput
+}
+
+export type SellerUpdateOneRequiredWithoutSellerAddressNestedInput = {
+  create?: Prisma.XOR<Prisma.SellerCreateWithoutSellerAddressInput, Prisma.SellerUncheckedCreateWithoutSellerAddressInput>
+  connectOrCreate?: Prisma.SellerCreateOrConnectWithoutSellerAddressInput
+  upsert?: Prisma.SellerUpsertWithoutSellerAddressInput
+  connect?: Prisma.SellerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SellerUpdateToOneWithWhereWithoutSellerAddressInput, Prisma.SellerUpdateWithoutSellerAddressInput>, Prisma.SellerUncheckedUpdateWithoutSellerAddressInput>
+}
+
+export type SellerCreateNestedOneWithoutSellerDocumentInput = {
+  create?: Prisma.XOR<Prisma.SellerCreateWithoutSellerDocumentInput, Prisma.SellerUncheckedCreateWithoutSellerDocumentInput>
+  connectOrCreate?: Prisma.SellerCreateOrConnectWithoutSellerDocumentInput
+  connect?: Prisma.SellerWhereUniqueInput
+}
+
+export type SellerUpdateOneRequiredWithoutSellerDocumentNestedInput = {
+  create?: Prisma.XOR<Prisma.SellerCreateWithoutSellerDocumentInput, Prisma.SellerUncheckedCreateWithoutSellerDocumentInput>
+  connectOrCreate?: Prisma.SellerCreateOrConnectWithoutSellerDocumentInput
+  upsert?: Prisma.SellerUpsertWithoutSellerDocumentInput
+  connect?: Prisma.SellerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SellerUpdateToOneWithWhereWithoutSellerDocumentInput, Prisma.SellerUpdateWithoutSellerDocumentInput>, Prisma.SellerUncheckedUpdateWithoutSellerDocumentInput>
+}
+
 export type SellerCreateWithoutUserInput = {
   businessName: string
   status?: $Enums.SELLER_STATUS
@@ -571,6 +618,8 @@ export type SellerCreateWithoutUserInput = {
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  SellerAddress?: Prisma.SellerAddressCreateNestedManyWithoutSellerInput
+  SellerDocument?: Prisma.SellerDocumentCreateNestedManyWithoutSellerInput
 }
 
 export type SellerUncheckedCreateWithoutUserInput = {
@@ -584,6 +633,8 @@ export type SellerUncheckedCreateWithoutUserInput = {
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  SellerAddress?: Prisma.SellerAddressUncheckedCreateNestedManyWithoutSellerInput
+  SellerDocument?: Prisma.SellerDocumentUncheckedCreateNestedManyWithoutSellerInput
 }
 
 export type SellerCreateOrConnectWithoutUserInput = {
@@ -613,6 +664,8 @@ export type SellerUpdateWithoutUserInput = {
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  SellerAddress?: Prisma.SellerAddressUpdateManyWithoutSellerNestedInput
+  SellerDocument?: Prisma.SellerDocumentUpdateManyWithoutSellerNestedInput
 }
 
 export type SellerUncheckedUpdateWithoutUserInput = {
@@ -626,8 +679,200 @@ export type SellerUncheckedUpdateWithoutUserInput = {
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  SellerAddress?: Prisma.SellerAddressUncheckedUpdateManyWithoutSellerNestedInput
+  SellerDocument?: Prisma.SellerDocumentUncheckedUpdateManyWithoutSellerNestedInput
 }
 
+export type SellerCreateWithoutSellerAddressInput = {
+  businessName: string
+  status?: $Enums.SELLER_STATUS
+  businessType?: $Enums.BUSINESS_TYPE
+  verificationStatus?: $Enums.VERIFICATION_STATUS
+  rating?: number
+  totalReviews?: number
+  fraudScore?: number
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  User: Prisma.UserCreateNestedOneWithoutSellerInput
+  SellerDocument?: Prisma.SellerDocumentCreateNestedManyWithoutSellerInput
+}
+
+export type SellerUncheckedCreateWithoutSellerAddressInput = {
+  userId: string
+  businessName: string
+  status?: $Enums.SELLER_STATUS
+  businessType?: $Enums.BUSINESS_TYPE
+  verificationStatus?: $Enums.VERIFICATION_STATUS
+  rating?: number
+  totalReviews?: number
+  fraudScore?: number
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  SellerDocument?: Prisma.SellerDocumentUncheckedCreateNestedManyWithoutSellerInput
+}
+
+export type SellerCreateOrConnectWithoutSellerAddressInput = {
+  where: Prisma.SellerWhereUniqueInput
+  create: Prisma.XOR<Prisma.SellerCreateWithoutSellerAddressInput, Prisma.SellerUncheckedCreateWithoutSellerAddressInput>
+}
+
+export type SellerUpsertWithoutSellerAddressInput = {
+  update: Prisma.XOR<Prisma.SellerUpdateWithoutSellerAddressInput, Prisma.SellerUncheckedUpdateWithoutSellerAddressInput>
+  create: Prisma.XOR<Prisma.SellerCreateWithoutSellerAddressInput, Prisma.SellerUncheckedCreateWithoutSellerAddressInput>
+  where?: Prisma.SellerWhereInput
+}
+
+export type SellerUpdateToOneWithWhereWithoutSellerAddressInput = {
+  where?: Prisma.SellerWhereInput
+  data: Prisma.XOR<Prisma.SellerUpdateWithoutSellerAddressInput, Prisma.SellerUncheckedUpdateWithoutSellerAddressInput>
+}
+
+export type SellerUpdateWithoutSellerAddressInput = {
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
+  businessType?: Prisma.EnumBUSINESS_TYPEFieldUpdateOperationsInput | $Enums.BUSINESS_TYPE
+  verificationStatus?: Prisma.EnumVERIFICATION_STATUSFieldUpdateOperationsInput | $Enums.VERIFICATION_STATUS
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalReviews?: Prisma.IntFieldUpdateOperationsInput | number
+  fraudScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  User?: Prisma.UserUpdateOneRequiredWithoutSellerNestedInput
+  SellerDocument?: Prisma.SellerDocumentUpdateManyWithoutSellerNestedInput
+}
+
+export type SellerUncheckedUpdateWithoutSellerAddressInput = {
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
+  businessType?: Prisma.EnumBUSINESS_TYPEFieldUpdateOperationsInput | $Enums.BUSINESS_TYPE
+  verificationStatus?: Prisma.EnumVERIFICATION_STATUSFieldUpdateOperationsInput | $Enums.VERIFICATION_STATUS
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalReviews?: Prisma.IntFieldUpdateOperationsInput | number
+  fraudScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  SellerDocument?: Prisma.SellerDocumentUncheckedUpdateManyWithoutSellerNestedInput
+}
+
+export type SellerCreateWithoutSellerDocumentInput = {
+  businessName: string
+  status?: $Enums.SELLER_STATUS
+  businessType?: $Enums.BUSINESS_TYPE
+  verificationStatus?: $Enums.VERIFICATION_STATUS
+  rating?: number
+  totalReviews?: number
+  fraudScore?: number
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  User: Prisma.UserCreateNestedOneWithoutSellerInput
+  SellerAddress?: Prisma.SellerAddressCreateNestedManyWithoutSellerInput
+}
+
+export type SellerUncheckedCreateWithoutSellerDocumentInput = {
+  userId: string
+  businessName: string
+  status?: $Enums.SELLER_STATUS
+  businessType?: $Enums.BUSINESS_TYPE
+  verificationStatus?: $Enums.VERIFICATION_STATUS
+  rating?: number
+  totalReviews?: number
+  fraudScore?: number
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  SellerAddress?: Prisma.SellerAddressUncheckedCreateNestedManyWithoutSellerInput
+}
+
+export type SellerCreateOrConnectWithoutSellerDocumentInput = {
+  where: Prisma.SellerWhereUniqueInput
+  create: Prisma.XOR<Prisma.SellerCreateWithoutSellerDocumentInput, Prisma.SellerUncheckedCreateWithoutSellerDocumentInput>
+}
+
+export type SellerUpsertWithoutSellerDocumentInput = {
+  update: Prisma.XOR<Prisma.SellerUpdateWithoutSellerDocumentInput, Prisma.SellerUncheckedUpdateWithoutSellerDocumentInput>
+  create: Prisma.XOR<Prisma.SellerCreateWithoutSellerDocumentInput, Prisma.SellerUncheckedCreateWithoutSellerDocumentInput>
+  where?: Prisma.SellerWhereInput
+}
+
+export type SellerUpdateToOneWithWhereWithoutSellerDocumentInput = {
+  where?: Prisma.SellerWhereInput
+  data: Prisma.XOR<Prisma.SellerUpdateWithoutSellerDocumentInput, Prisma.SellerUncheckedUpdateWithoutSellerDocumentInput>
+}
+
+export type SellerUpdateWithoutSellerDocumentInput = {
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
+  businessType?: Prisma.EnumBUSINESS_TYPEFieldUpdateOperationsInput | $Enums.BUSINESS_TYPE
+  verificationStatus?: Prisma.EnumVERIFICATION_STATUSFieldUpdateOperationsInput | $Enums.VERIFICATION_STATUS
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalReviews?: Prisma.IntFieldUpdateOperationsInput | number
+  fraudScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  User?: Prisma.UserUpdateOneRequiredWithoutSellerNestedInput
+  SellerAddress?: Prisma.SellerAddressUpdateManyWithoutSellerNestedInput
+}
+
+export type SellerUncheckedUpdateWithoutSellerDocumentInput = {
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
+  businessType?: Prisma.EnumBUSINESS_TYPEFieldUpdateOperationsInput | $Enums.BUSINESS_TYPE
+  verificationStatus?: Prisma.EnumVERIFICATION_STATUSFieldUpdateOperationsInput | $Enums.VERIFICATION_STATUS
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalReviews?: Prisma.IntFieldUpdateOperationsInput | number
+  fraudScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  SellerAddress?: Prisma.SellerAddressUncheckedUpdateManyWithoutSellerNestedInput
+}
+
+
+/**
+ * Count Type SellerCountOutputType
+ */
+
+export type SellerCountOutputType = {
+  SellerAddress: number
+  SellerDocument: number
+}
+
+export type SellerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  SellerAddress?: boolean | SellerCountOutputTypeCountSellerAddressArgs
+  SellerDocument?: boolean | SellerCountOutputTypeCountSellerDocumentArgs
+}
+
+/**
+ * SellerCountOutputType without action
+ */
+export type SellerCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SellerCountOutputType
+   */
+  select?: Prisma.SellerCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * SellerCountOutputType without action
+ */
+export type SellerCountOutputTypeCountSellerAddressArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SellerAddressWhereInput
+}
+
+/**
+ * SellerCountOutputType without action
+ */
+export type SellerCountOutputTypeCountSellerDocumentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SellerDocumentWhereInput
+}
 
 
 export type SellerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -643,6 +888,9 @@ export type SellerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   createdAt?: boolean
   updatedAt?: boolean
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  SellerAddress?: boolean | Prisma.Seller$SellerAddressArgs<ExtArgs>
+  SellerDocument?: boolean | Prisma.Seller$SellerDocumentArgs<ExtArgs>
+  _count?: boolean | Prisma.SellerCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["seller"]>
 
 export type SellerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -692,6 +940,9 @@ export type SellerSelectScalar = {
 export type SellerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"userId" | "businessName" | "status" | "businessType" | "verificationStatus" | "rating" | "totalReviews" | "fraudScore" | "isDeleted" | "createdAt" | "updatedAt", ExtArgs["result"]["seller"]>
 export type SellerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  SellerAddress?: boolean | Prisma.Seller$SellerAddressArgs<ExtArgs>
+  SellerDocument?: boolean | Prisma.Seller$SellerDocumentArgs<ExtArgs>
+  _count?: boolean | Prisma.SellerCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SellerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -704,6 +955,8 @@ export type $SellerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   name: "Seller"
   objects: {
     User: Prisma.$UserPayload<ExtArgs>
+    SellerAddress: Prisma.$SellerAddressPayload<ExtArgs>[]
+    SellerDocument: Prisma.$SellerDocumentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     userId: string
@@ -1112,6 +1365,8 @@ readonly fields: SellerFieldRefs;
 export interface Prisma__SellerClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   User<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  SellerAddress<T extends Prisma.Seller$SellerAddressArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Seller$SellerAddressArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SellerAddressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  SellerDocument<T extends Prisma.Seller$SellerDocumentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Seller$SellerDocumentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SellerDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1550,6 +1805,54 @@ export type SellerDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Limit how many Sellers to delete.
    */
   limit?: number
+}
+
+/**
+ * Seller.SellerAddress
+ */
+export type Seller$SellerAddressArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SellerAddress
+   */
+  select?: Prisma.SellerAddressSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SellerAddress
+   */
+  omit?: Prisma.SellerAddressOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SellerAddressInclude<ExtArgs> | null
+  where?: Prisma.SellerAddressWhereInput
+  orderBy?: Prisma.SellerAddressOrderByWithRelationInput | Prisma.SellerAddressOrderByWithRelationInput[]
+  cursor?: Prisma.SellerAddressWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SellerAddressScalarFieldEnum | Prisma.SellerAddressScalarFieldEnum[]
+}
+
+/**
+ * Seller.SellerDocument
+ */
+export type Seller$SellerDocumentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SellerDocument
+   */
+  select?: Prisma.SellerDocumentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SellerDocument
+   */
+  omit?: Prisma.SellerDocumentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SellerDocumentInclude<ExtArgs> | null
+  where?: Prisma.SellerDocumentWhereInput
+  orderBy?: Prisma.SellerDocumentOrderByWithRelationInput | Prisma.SellerDocumentOrderByWithRelationInput[]
+  cursor?: Prisma.SellerDocumentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SellerDocumentScalarFieldEnum | Prisma.SellerDocumentScalarFieldEnum[]
 }
 
 /**

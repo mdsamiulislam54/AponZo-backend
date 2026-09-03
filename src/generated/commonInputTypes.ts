@@ -287,6 +287,57 @@ export type IntWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedIntFilter<$PrismaModel>
 }
 
+export type EnumADDRESS_TYPEFilter<$PrismaModel = never> = {
+  equals?: $Enums.ADDRESS_TYPE | Prisma.EnumADDRESS_TYPEFieldRefInput<$PrismaModel>
+  in?: $Enums.ADDRESS_TYPE[] | Prisma.ListEnumADDRESS_TYPEFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ADDRESS_TYPE[] | Prisma.ListEnumADDRESS_TYPEFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumADDRESS_TYPEFilter<$PrismaModel> | $Enums.ADDRESS_TYPE
+}
+
+export type EnumADDRESS_TYPEWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ADDRESS_TYPE | Prisma.EnumADDRESS_TYPEFieldRefInput<$PrismaModel>
+  in?: $Enums.ADDRESS_TYPE[] | Prisma.ListEnumADDRESS_TYPEFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ADDRESS_TYPE[] | Prisma.ListEnumADDRESS_TYPEFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumADDRESS_TYPEWithAggregatesFilter<$PrismaModel> | $Enums.ADDRESS_TYPE
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumADDRESS_TYPEFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumADDRESS_TYPEFilter<$PrismaModel>
+}
+
+export type EnumDOCUMENT_TYPEFilter<$PrismaModel = never> = {
+  equals?: $Enums.DOCUMENT_TYPE | Prisma.EnumDOCUMENT_TYPEFieldRefInput<$PrismaModel>
+  in?: $Enums.DOCUMENT_TYPE[] | Prisma.ListEnumDOCUMENT_TYPEFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DOCUMENT_TYPE[] | Prisma.ListEnumDOCUMENT_TYPEFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDOCUMENT_TYPEFilter<$PrismaModel> | $Enums.DOCUMENT_TYPE
+}
+
+export type EnumDOCUMENT_STATUSFilter<$PrismaModel = never> = {
+  equals?: $Enums.DOCUMENT_STATUS | Prisma.EnumDOCUMENT_STATUSFieldRefInput<$PrismaModel>
+  in?: $Enums.DOCUMENT_STATUS[] | Prisma.ListEnumDOCUMENT_STATUSFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DOCUMENT_STATUS[] | Prisma.ListEnumDOCUMENT_STATUSFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDOCUMENT_STATUSFilter<$PrismaModel> | $Enums.DOCUMENT_STATUS
+}
+
+export type EnumDOCUMENT_TYPEWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DOCUMENT_TYPE | Prisma.EnumDOCUMENT_TYPEFieldRefInput<$PrismaModel>
+  in?: $Enums.DOCUMENT_TYPE[] | Prisma.ListEnumDOCUMENT_TYPEFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DOCUMENT_TYPE[] | Prisma.ListEnumDOCUMENT_TYPEFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDOCUMENT_TYPEWithAggregatesFilter<$PrismaModel> | $Enums.DOCUMENT_TYPE
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDOCUMENT_TYPEFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDOCUMENT_TYPEFilter<$PrismaModel>
+}
+
+export type EnumDOCUMENT_STATUSWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DOCUMENT_STATUS | Prisma.EnumDOCUMENT_STATUSFieldRefInput<$PrismaModel>
+  in?: $Enums.DOCUMENT_STATUS[] | Prisma.ListEnumDOCUMENT_STATUSFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DOCUMENT_STATUS[] | Prisma.ListEnumDOCUMENT_STATUSFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDOCUMENT_STATUSWithAggregatesFilter<$PrismaModel> | $Enums.DOCUMENT_STATUS
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDOCUMENT_STATUSFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDOCUMENT_STATUSFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -560,6 +611,57 @@ export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
   _sum?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedIntFilter<$PrismaModel>
   _max?: Prisma.NestedIntFilter<$PrismaModel>
+}
+
+export type NestedEnumADDRESS_TYPEFilter<$PrismaModel = never> = {
+  equals?: $Enums.ADDRESS_TYPE | Prisma.EnumADDRESS_TYPEFieldRefInput<$PrismaModel>
+  in?: $Enums.ADDRESS_TYPE[] | Prisma.ListEnumADDRESS_TYPEFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ADDRESS_TYPE[] | Prisma.ListEnumADDRESS_TYPEFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumADDRESS_TYPEFilter<$PrismaModel> | $Enums.ADDRESS_TYPE
+}
+
+export type NestedEnumADDRESS_TYPEWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ADDRESS_TYPE | Prisma.EnumADDRESS_TYPEFieldRefInput<$PrismaModel>
+  in?: $Enums.ADDRESS_TYPE[] | Prisma.ListEnumADDRESS_TYPEFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ADDRESS_TYPE[] | Prisma.ListEnumADDRESS_TYPEFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumADDRESS_TYPEWithAggregatesFilter<$PrismaModel> | $Enums.ADDRESS_TYPE
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumADDRESS_TYPEFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumADDRESS_TYPEFilter<$PrismaModel>
+}
+
+export type NestedEnumDOCUMENT_TYPEFilter<$PrismaModel = never> = {
+  equals?: $Enums.DOCUMENT_TYPE | Prisma.EnumDOCUMENT_TYPEFieldRefInput<$PrismaModel>
+  in?: $Enums.DOCUMENT_TYPE[] | Prisma.ListEnumDOCUMENT_TYPEFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DOCUMENT_TYPE[] | Prisma.ListEnumDOCUMENT_TYPEFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDOCUMENT_TYPEFilter<$PrismaModel> | $Enums.DOCUMENT_TYPE
+}
+
+export type NestedEnumDOCUMENT_STATUSFilter<$PrismaModel = never> = {
+  equals?: $Enums.DOCUMENT_STATUS | Prisma.EnumDOCUMENT_STATUSFieldRefInput<$PrismaModel>
+  in?: $Enums.DOCUMENT_STATUS[] | Prisma.ListEnumDOCUMENT_STATUSFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DOCUMENT_STATUS[] | Prisma.ListEnumDOCUMENT_STATUSFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDOCUMENT_STATUSFilter<$PrismaModel> | $Enums.DOCUMENT_STATUS
+}
+
+export type NestedEnumDOCUMENT_TYPEWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DOCUMENT_TYPE | Prisma.EnumDOCUMENT_TYPEFieldRefInput<$PrismaModel>
+  in?: $Enums.DOCUMENT_TYPE[] | Prisma.ListEnumDOCUMENT_TYPEFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DOCUMENT_TYPE[] | Prisma.ListEnumDOCUMENT_TYPEFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDOCUMENT_TYPEWithAggregatesFilter<$PrismaModel> | $Enums.DOCUMENT_TYPE
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDOCUMENT_TYPEFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDOCUMENT_TYPEFilter<$PrismaModel>
+}
+
+export type NestedEnumDOCUMENT_STATUSWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DOCUMENT_STATUS | Prisma.EnumDOCUMENT_STATUSFieldRefInput<$PrismaModel>
+  in?: $Enums.DOCUMENT_STATUS[] | Prisma.ListEnumDOCUMENT_STATUSFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DOCUMENT_STATUS[] | Prisma.ListEnumDOCUMENT_STATUSFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDOCUMENT_STATUSWithAggregatesFilter<$PrismaModel> | $Enums.DOCUMENT_STATUS
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDOCUMENT_STATUSFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDOCUMENT_STATUSFilter<$PrismaModel>
 }
 
 

@@ -42,3 +42,13 @@ export type Verification = Prisma.VerificationModel
  * 
  */
 export type Seller = Prisma.SellerModel
+/**
+ * Model SellerAddress
+ * 
+ */
+export type SellerAddress = Prisma.SellerAddressModel
+/**
+ * Model SellerDocument
+ * 
+ */
+export type SellerDocument = Prisma.SellerDocumentModel

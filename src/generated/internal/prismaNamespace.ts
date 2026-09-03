@@ -401,7 +401,9 @@ export const ModelName = {
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification',
-  Seller: 'Seller'
+  Seller: 'Seller',
+  SellerAddress: 'SellerAddress',
+  SellerDocument: 'SellerDocument'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -417,7 +419,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "seller"
+    modelProps: "user" | "session" | "account" | "verification" | "seller" | "sellerAddress" | "sellerDocument"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -791,6 +793,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    SellerAddress: {
+      payload: Prisma.$SellerAddressPayload<ExtArgs>
+      fields: Prisma.SellerAddressFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SellerAddressFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerAddressPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SellerAddressFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerAddressPayload>
+        }
+        findFirst: {
+          args: Prisma.SellerAddressFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerAddressPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SellerAddressFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerAddressPayload>
+        }
+        findMany: {
+          args: Prisma.SellerAddressFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerAddressPayload>[]
+        }
+        create: {
+          args: Prisma.SellerAddressCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerAddressPayload>
+        }
+        createMany: {
+          args: Prisma.SellerAddressCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SellerAddressCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerAddressPayload>[]
+        }
+        delete: {
+          args: Prisma.SellerAddressDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerAddressPayload>
+        }
+        update: {
+          args: Prisma.SellerAddressUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerAddressPayload>
+        }
+        deleteMany: {
+          args: Prisma.SellerAddressDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SellerAddressUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SellerAddressUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerAddressPayload>[]
+        }
+        upsert: {
+          args: Prisma.SellerAddressUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerAddressPayload>
+        }
+        aggregate: {
+          args: Prisma.SellerAddressAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSellerAddress>
+        }
+        groupBy: {
+          args: Prisma.SellerAddressGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SellerAddressGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SellerAddressCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SellerAddressCountAggregateOutputType> | number
+        }
+      }
+    }
+    SellerDocument: {
+      payload: Prisma.$SellerDocumentPayload<ExtArgs>
+      fields: Prisma.SellerDocumentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SellerDocumentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerDocumentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SellerDocumentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerDocumentPayload>
+        }
+        findFirst: {
+          args: Prisma.SellerDocumentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerDocumentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SellerDocumentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerDocumentPayload>
+        }
+        findMany: {
+          args: Prisma.SellerDocumentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerDocumentPayload>[]
+        }
+        create: {
+          args: Prisma.SellerDocumentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerDocumentPayload>
+        }
+        createMany: {
+          args: Prisma.SellerDocumentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SellerDocumentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerDocumentPayload>[]
+        }
+        delete: {
+          args: Prisma.SellerDocumentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerDocumentPayload>
+        }
+        update: {
+          args: Prisma.SellerDocumentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerDocumentPayload>
+        }
+        deleteMany: {
+          args: Prisma.SellerDocumentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SellerDocumentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SellerDocumentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerDocumentPayload>[]
+        }
+        upsert: {
+          args: Prisma.SellerDocumentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SellerDocumentPayload>
+        }
+        aggregate: {
+          args: Prisma.SellerDocumentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSellerDocument>
+        }
+        groupBy: {
+          args: Prisma.SellerDocumentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SellerDocumentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SellerDocumentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SellerDocumentCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -909,6 +1059,43 @@ export const SellerScalarFieldEnum = {
 } as const
 
 export type SellerScalarFieldEnum = (typeof SellerScalarFieldEnum)[keyof typeof SellerScalarFieldEnum]
+
+
+export const SellerAddressScalarFieldEnum = {
+  id: 'id',
+  sellerId: 'sellerId',
+  type: 'type',
+  name: 'name',
+  phone: 'phone',
+  address: 'address',
+  city: 'city',
+  district: 'district',
+  country: 'country',
+  zipCode: 'zipCode',
+  isDefault: 'isDefault',
+  isDeleted: 'isDeleted',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SellerAddressScalarFieldEnum = (typeof SellerAddressScalarFieldEnum)[keyof typeof SellerAddressScalarFieldEnum]
+
+
+export const SellerDocumentScalarFieldEnum = {
+  id: 'id',
+  sellerId: 'sellerId',
+  documentType: 'documentType',
+  status: 'status',
+  rejectionReason: 'rejectionReason',
+  reviewedBy: 'reviewedBy',
+  reviewedAt: 'reviewedAt',
+  documentUrl: 'documentUrl',
+  isDeleted: 'isDeleted',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SellerDocumentScalarFieldEnum = (typeof SellerDocumentScalarFieldEnum)[keyof typeof SellerDocumentScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1073,6 +1260,48 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
+
+/**
+ * Reference to a field of type 'ADDRESS_TYPE'
+ */
+export type EnumADDRESS_TYPEFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ADDRESS_TYPE'>
+    
+
+
+/**
+ * Reference to a field of type 'ADDRESS_TYPE[]'
+ */
+export type ListEnumADDRESS_TYPEFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ADDRESS_TYPE[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DOCUMENT_TYPE'
+ */
+export type EnumDOCUMENT_TYPEFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DOCUMENT_TYPE'>
+    
+
+
+/**
+ * Reference to a field of type 'DOCUMENT_TYPE[]'
+ */
+export type ListEnumDOCUMENT_TYPEFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DOCUMENT_TYPE[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DOCUMENT_STATUS'
+ */
+export type EnumDOCUMENT_STATUSFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DOCUMENT_STATUS'>
+    
+
+
+/**
+ * Reference to a field of type 'DOCUMENT_STATUS[]'
+ */
+export type ListEnumDOCUMENT_STATUSFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DOCUMENT_STATUS[]'>
+    
+
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */
@@ -1229,6 +1458,8 @@ export type GlobalOmitConfig = {
   account?: Prisma.AccountOmit
   verification?: Prisma.VerificationOmit
   seller?: Prisma.SellerOmit
+  sellerAddress?: Prisma.SellerAddressOmit
+  sellerDocument?: Prisma.SellerDocumentOmit
 }
 
 /* Types for Logging */
