@@ -26,6 +26,14 @@ export const Status = {
 export type Status = (typeof Status)[keyof typeof Status]
 
 
+export const CategoryStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+} as const
+
+export type CategoryStatus = (typeof CategoryStatus)[keyof typeof CategoryStatus]
+
+
 export const SELLER_STATUS = {
   PENDING: 'PENDING',
   APPROVED: 'APPROVED',
@@ -81,3 +89,23 @@ export const DOCUMENT_STATUS = {
 } as const
 
 export type DOCUMENT_STATUS = (typeof DOCUMENT_STATUS)[keyof typeof DOCUMENT_STATUS]
+
+
+export const Stores_Type = {
+  PHYSICAL: 'PHYSICAL',
+  ONLINE: 'ONLINE',
+  INDIVIDUAL: 'INDIVIDUAL'
+} as const
+
+export type Stores_Type = (typeof Stores_Type)[keyof typeof Stores_Type]
+
+
+export const Store_Status = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
+  DRAFT: 'DRAFT',
+  SUSPENDED: 'SUSPENDED',
+  BANDED: 'BANDED'
+} as const
+
+export type Store_Status = (typeof Store_Status)[keyof typeof Store_Status]

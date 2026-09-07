@@ -62,6 +62,11 @@ export type Account = Prisma.AccountModel
  */
 export type Verification = Prisma.VerificationModel
 /**
+ * Model Category
+ * 
+ */
+export type Category = Prisma.CategoryModel
+/**
  * Model Seller
  * 
  */
@@ -76,3 +81,8 @@ export type SellerAddress = Prisma.SellerAddressModel
  * 
  */
 export type SellerDocument = Prisma.SellerDocumentModel
+/**
+ * Model Stores
+ * 
+ */
+export type Stores = Prisma.StoresModel

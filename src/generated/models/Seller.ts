@@ -283,6 +283,7 @@ export type SellerWhereInput = {
   User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   SellerAddress?: Prisma.SellerAddressListRelationFilter
   SellerDocument?: Prisma.SellerDocumentListRelationFilter
+  Store?: Prisma.XOR<Prisma.StoresNullableScalarRelationFilter, Prisma.StoresWhereInput> | null
 }
 
 export type SellerOrderByWithRelationInput = {
@@ -301,6 +302,7 @@ export type SellerOrderByWithRelationInput = {
   User?: Prisma.UserOrderByWithRelationInput
   SellerAddress?: Prisma.SellerAddressOrderByRelationAggregateInput
   SellerDocument?: Prisma.SellerDocumentOrderByRelationAggregateInput
+  Store?: Prisma.StoresOrderByWithRelationInput
 }
 
 export type SellerWhereUniqueInput = Prisma.AtLeast<{
@@ -322,6 +324,7 @@ export type SellerWhereUniqueInput = Prisma.AtLeast<{
   User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   SellerAddress?: Prisma.SellerAddressListRelationFilter
   SellerDocument?: Prisma.SellerDocumentListRelationFilter
+  Store?: Prisma.XOR<Prisma.StoresNullableScalarRelationFilter, Prisma.StoresWhereInput> | null
 }, "id" | "userId" | "businessName">
 
 export type SellerOrderByWithAggregationInput = {
@@ -377,6 +380,7 @@ export type SellerCreateInput = {
   User: Prisma.UserCreateNestedOneWithoutSellerInput
   SellerAddress?: Prisma.SellerAddressCreateNestedManyWithoutSellerInput
   SellerDocument?: Prisma.SellerDocumentCreateNestedManyWithoutSellerInput
+  Store?: Prisma.StoresCreateNestedOneWithoutSellerInput
 }
 
 export type SellerUncheckedCreateInput = {
@@ -394,6 +398,7 @@ export type SellerUncheckedCreateInput = {
   updatedAt?: Date | string
   SellerAddress?: Prisma.SellerAddressUncheckedCreateNestedManyWithoutSellerInput
   SellerDocument?: Prisma.SellerDocumentUncheckedCreateNestedManyWithoutSellerInput
+  Store?: Prisma.StoresUncheckedCreateNestedOneWithoutSellerInput
 }
 
 export type SellerUpdateInput = {
@@ -411,6 +416,7 @@ export type SellerUpdateInput = {
   User?: Prisma.UserUpdateOneRequiredWithoutSellerNestedInput
   SellerAddress?: Prisma.SellerAddressUpdateManyWithoutSellerNestedInput
   SellerDocument?: Prisma.SellerDocumentUpdateManyWithoutSellerNestedInput
+  Store?: Prisma.StoresUpdateOneWithoutSellerNestedInput
 }
 
 export type SellerUncheckedUpdateInput = {
@@ -428,6 +434,7 @@ export type SellerUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   SellerAddress?: Prisma.SellerAddressUncheckedUpdateManyWithoutSellerNestedInput
   SellerDocument?: Prisma.SellerDocumentUncheckedUpdateManyWithoutSellerNestedInput
+  Store?: Prisma.StoresUncheckedUpdateOneWithoutSellerNestedInput
 }
 
 export type SellerCreateManyInput = {
@@ -629,6 +636,20 @@ export type SellerUpdateOneRequiredWithoutSellerDocumentNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SellerUpdateToOneWithWhereWithoutSellerDocumentInput, Prisma.SellerUpdateWithoutSellerDocumentInput>, Prisma.SellerUncheckedUpdateWithoutSellerDocumentInput>
 }
 
+export type SellerCreateNestedOneWithoutStoreInput = {
+  create?: Prisma.XOR<Prisma.SellerCreateWithoutStoreInput, Prisma.SellerUncheckedCreateWithoutStoreInput>
+  connectOrCreate?: Prisma.SellerCreateOrConnectWithoutStoreInput
+  connect?: Prisma.SellerWhereUniqueInput
+}
+
+export type SellerUpdateOneRequiredWithoutStoreNestedInput = {
+  create?: Prisma.XOR<Prisma.SellerCreateWithoutStoreInput, Prisma.SellerUncheckedCreateWithoutStoreInput>
+  connectOrCreate?: Prisma.SellerCreateOrConnectWithoutStoreInput
+  upsert?: Prisma.SellerUpsertWithoutStoreInput
+  connect?: Prisma.SellerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SellerUpdateToOneWithWhereWithoutStoreInput, Prisma.SellerUpdateWithoutStoreInput>, Prisma.SellerUncheckedUpdateWithoutStoreInput>
+}
+
 export type SellerCreateWithoutUserInput = {
   id?: string
   businessName: string
@@ -643,6 +664,7 @@ export type SellerCreateWithoutUserInput = {
   updatedAt?: Date | string
   SellerAddress?: Prisma.SellerAddressCreateNestedManyWithoutSellerInput
   SellerDocument?: Prisma.SellerDocumentCreateNestedManyWithoutSellerInput
+  Store?: Prisma.StoresCreateNestedOneWithoutSellerInput
 }
 
 export type SellerUncheckedCreateWithoutUserInput = {
@@ -659,6 +681,7 @@ export type SellerUncheckedCreateWithoutUserInput = {
   updatedAt?: Date | string
   SellerAddress?: Prisma.SellerAddressUncheckedCreateNestedManyWithoutSellerInput
   SellerDocument?: Prisma.SellerDocumentUncheckedCreateNestedManyWithoutSellerInput
+  Store?: Prisma.StoresUncheckedCreateNestedOneWithoutSellerInput
 }
 
 export type SellerCreateOrConnectWithoutUserInput = {
@@ -691,6 +714,7 @@ export type SellerUpdateWithoutUserInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   SellerAddress?: Prisma.SellerAddressUpdateManyWithoutSellerNestedInput
   SellerDocument?: Prisma.SellerDocumentUpdateManyWithoutSellerNestedInput
+  Store?: Prisma.StoresUpdateOneWithoutSellerNestedInput
 }
 
 export type SellerUncheckedUpdateWithoutUserInput = {
@@ -707,6 +731,7 @@ export type SellerUncheckedUpdateWithoutUserInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   SellerAddress?: Prisma.SellerAddressUncheckedUpdateManyWithoutSellerNestedInput
   SellerDocument?: Prisma.SellerDocumentUncheckedUpdateManyWithoutSellerNestedInput
+  Store?: Prisma.StoresUncheckedUpdateOneWithoutSellerNestedInput
 }
 
 export type SellerCreateWithoutSellerAddressInput = {
@@ -723,6 +748,7 @@ export type SellerCreateWithoutSellerAddressInput = {
   updatedAt?: Date | string
   User: Prisma.UserCreateNestedOneWithoutSellerInput
   SellerDocument?: Prisma.SellerDocumentCreateNestedManyWithoutSellerInput
+  Store?: Prisma.StoresCreateNestedOneWithoutSellerInput
 }
 
 export type SellerUncheckedCreateWithoutSellerAddressInput = {
@@ -739,6 +765,7 @@ export type SellerUncheckedCreateWithoutSellerAddressInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   SellerDocument?: Prisma.SellerDocumentUncheckedCreateNestedManyWithoutSellerInput
+  Store?: Prisma.StoresUncheckedCreateNestedOneWithoutSellerInput
 }
 
 export type SellerCreateOrConnectWithoutSellerAddressInput = {
@@ -771,6 +798,7 @@ export type SellerUpdateWithoutSellerAddressInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   User?: Prisma.UserUpdateOneRequiredWithoutSellerNestedInput
   SellerDocument?: Prisma.SellerDocumentUpdateManyWithoutSellerNestedInput
+  Store?: Prisma.StoresUpdateOneWithoutSellerNestedInput
 }
 
 export type SellerUncheckedUpdateWithoutSellerAddressInput = {
@@ -787,6 +815,7 @@ export type SellerUncheckedUpdateWithoutSellerAddressInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   SellerDocument?: Prisma.SellerDocumentUncheckedUpdateManyWithoutSellerNestedInput
+  Store?: Prisma.StoresUncheckedUpdateOneWithoutSellerNestedInput
 }
 
 export type SellerCreateWithoutSellerDocumentInput = {
@@ -803,6 +832,7 @@ export type SellerCreateWithoutSellerDocumentInput = {
   updatedAt?: Date | string
   User: Prisma.UserCreateNestedOneWithoutSellerInput
   SellerAddress?: Prisma.SellerAddressCreateNestedManyWithoutSellerInput
+  Store?: Prisma.StoresCreateNestedOneWithoutSellerInput
 }
 
 export type SellerUncheckedCreateWithoutSellerDocumentInput = {
@@ -819,6 +849,7 @@ export type SellerUncheckedCreateWithoutSellerDocumentInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   SellerAddress?: Prisma.SellerAddressUncheckedCreateNestedManyWithoutSellerInput
+  Store?: Prisma.StoresUncheckedCreateNestedOneWithoutSellerInput
 }
 
 export type SellerCreateOrConnectWithoutSellerDocumentInput = {
@@ -851,6 +882,7 @@ export type SellerUpdateWithoutSellerDocumentInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   User?: Prisma.UserUpdateOneRequiredWithoutSellerNestedInput
   SellerAddress?: Prisma.SellerAddressUpdateManyWithoutSellerNestedInput
+  Store?: Prisma.StoresUpdateOneWithoutSellerNestedInput
 }
 
 export type SellerUncheckedUpdateWithoutSellerDocumentInput = {
@@ -867,6 +899,91 @@ export type SellerUncheckedUpdateWithoutSellerDocumentInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   SellerAddress?: Prisma.SellerAddressUncheckedUpdateManyWithoutSellerNestedInput
+  Store?: Prisma.StoresUncheckedUpdateOneWithoutSellerNestedInput
+}
+
+export type SellerCreateWithoutStoreInput = {
+  id?: string
+  businessName: string
+  status?: $Enums.SELLER_STATUS
+  businessType?: $Enums.BUSINESS_TYPE
+  verificationStatus?: $Enums.VERIFICATION_STATUS
+  rating?: number
+  totalReviews?: number
+  fraudScore?: number
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  User: Prisma.UserCreateNestedOneWithoutSellerInput
+  SellerAddress?: Prisma.SellerAddressCreateNestedManyWithoutSellerInput
+  SellerDocument?: Prisma.SellerDocumentCreateNestedManyWithoutSellerInput
+}
+
+export type SellerUncheckedCreateWithoutStoreInput = {
+  id?: string
+  userId: string
+  businessName: string
+  status?: $Enums.SELLER_STATUS
+  businessType?: $Enums.BUSINESS_TYPE
+  verificationStatus?: $Enums.VERIFICATION_STATUS
+  rating?: number
+  totalReviews?: number
+  fraudScore?: number
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  SellerAddress?: Prisma.SellerAddressUncheckedCreateNestedManyWithoutSellerInput
+  SellerDocument?: Prisma.SellerDocumentUncheckedCreateNestedManyWithoutSellerInput
+}
+
+export type SellerCreateOrConnectWithoutStoreInput = {
+  where: Prisma.SellerWhereUniqueInput
+  create: Prisma.XOR<Prisma.SellerCreateWithoutStoreInput, Prisma.SellerUncheckedCreateWithoutStoreInput>
+}
+
+export type SellerUpsertWithoutStoreInput = {
+  update: Prisma.XOR<Prisma.SellerUpdateWithoutStoreInput, Prisma.SellerUncheckedUpdateWithoutStoreInput>
+  create: Prisma.XOR<Prisma.SellerCreateWithoutStoreInput, Prisma.SellerUncheckedCreateWithoutStoreInput>
+  where?: Prisma.SellerWhereInput
+}
+
+export type SellerUpdateToOneWithWhereWithoutStoreInput = {
+  where?: Prisma.SellerWhereInput
+  data: Prisma.XOR<Prisma.SellerUpdateWithoutStoreInput, Prisma.SellerUncheckedUpdateWithoutStoreInput>
+}
+
+export type SellerUpdateWithoutStoreInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
+  businessType?: Prisma.EnumBUSINESS_TYPEFieldUpdateOperationsInput | $Enums.BUSINESS_TYPE
+  verificationStatus?: Prisma.EnumVERIFICATION_STATUSFieldUpdateOperationsInput | $Enums.VERIFICATION_STATUS
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalReviews?: Prisma.IntFieldUpdateOperationsInput | number
+  fraudScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  User?: Prisma.UserUpdateOneRequiredWithoutSellerNestedInput
+  SellerAddress?: Prisma.SellerAddressUpdateManyWithoutSellerNestedInput
+  SellerDocument?: Prisma.SellerDocumentUpdateManyWithoutSellerNestedInput
+}
+
+export type SellerUncheckedUpdateWithoutStoreInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSELLER_STATUSFieldUpdateOperationsInput | $Enums.SELLER_STATUS
+  businessType?: Prisma.EnumBUSINESS_TYPEFieldUpdateOperationsInput | $Enums.BUSINESS_TYPE
+  verificationStatus?: Prisma.EnumVERIFICATION_STATUSFieldUpdateOperationsInput | $Enums.VERIFICATION_STATUS
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalReviews?: Prisma.IntFieldUpdateOperationsInput | number
+  fraudScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  SellerAddress?: Prisma.SellerAddressUncheckedUpdateManyWithoutSellerNestedInput
+  SellerDocument?: Prisma.SellerDocumentUncheckedUpdateManyWithoutSellerNestedInput
 }
 
 
@@ -925,6 +1042,7 @@ export type SellerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   SellerAddress?: boolean | Prisma.Seller$SellerAddressArgs<ExtArgs>
   SellerDocument?: boolean | Prisma.Seller$SellerDocumentArgs<ExtArgs>
+  Store?: boolean | Prisma.Seller$StoreArgs<ExtArgs>
   _count?: boolean | Prisma.SellerCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["seller"]>
 
@@ -980,6 +1098,7 @@ export type SellerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   SellerAddress?: boolean | Prisma.Seller$SellerAddressArgs<ExtArgs>
   SellerDocument?: boolean | Prisma.Seller$SellerDocumentArgs<ExtArgs>
+  Store?: boolean | Prisma.Seller$StoreArgs<ExtArgs>
   _count?: boolean | Prisma.SellerCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SellerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -995,6 +1114,7 @@ export type $SellerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     User: Prisma.$UserPayload<ExtArgs>
     SellerAddress: Prisma.$SellerAddressPayload<ExtArgs>[]
     SellerDocument: Prisma.$SellerDocumentPayload<ExtArgs>[]
+    Store: Prisma.$StoresPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1406,6 +1526,7 @@ export interface Prisma__SellerClient<T, Null = never, ExtArgs extends runtime.T
   User<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   SellerAddress<T extends Prisma.Seller$SellerAddressArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Seller$SellerAddressArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SellerAddressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   SellerDocument<T extends Prisma.Seller$SellerDocumentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Seller$SellerDocumentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SellerDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  Store<T extends Prisma.Seller$StoreArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Seller$StoreArgs<ExtArgs>>): Prisma.Prisma__StoresClient<runtime.Types.Result.GetResult<Prisma.$StoresPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1893,6 +2014,25 @@ export type Seller$SellerDocumentArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.SellerDocumentScalarFieldEnum | Prisma.SellerDocumentScalarFieldEnum[]
+}
+
+/**
+ * Seller.Store
+ */
+export type Seller$StoreArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Stores
+   */
+  select?: Prisma.StoresSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Stores
+   */
+  omit?: Prisma.StoresOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StoresInclude<ExtArgs> | null
+  where?: Prisma.StoresWhereInput
 }
 
 /**

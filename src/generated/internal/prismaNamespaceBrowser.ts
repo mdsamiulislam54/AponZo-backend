@@ -55,9 +55,11 @@ export const ModelName = {
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification',
+  Category: 'Category',
   Seller: 'Seller',
   SellerAddress: 'SellerAddress',
-  SellerDocument: 'SellerDocument'
+  SellerDocument: 'SellerDocument',
+  Stores: 'Stores'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -140,6 +142,21 @@ export const VerificationScalarFieldEnum = {
 export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
 
 
+export const CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  icon: 'icon',
+  status: 'status',
+  parentId: 'parentId',
+  isDeleted: 'isDeleted',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
 export const SellerScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -194,6 +211,34 @@ export const SellerDocumentScalarFieldEnum = {
 } as const
 
 export type SellerDocumentScalarFieldEnum = (typeof SellerDocumentScalarFieldEnum)[keyof typeof SellerDocumentScalarFieldEnum]
+
+
+export const StoresScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  logo: 'logo',
+  banner: 'banner',
+  type: 'type',
+  status: 'status',
+  isVerified: 'isVerified',
+  rating: 'rating',
+  totalReviews: 'totalReviews',
+  totalOrders: 'totalOrders',
+  totalProducts: 'totalProducts',
+  totalSoldItems: 'totalSoldItems',
+  insideDeliveryFee: 'insideDeliveryFee',
+  outsideDeliveryFee: 'outsideDeliveryFee',
+  insideDeliveryDay: 'insideDeliveryDay',
+  outsideDeliveryDay: 'outsideDeliveryDay',
+  totalSales: 'totalSales',
+  sellerId: 'sellerId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StoresScalarFieldEnum = (typeof StoresScalarFieldEnum)[keyof typeof StoresScalarFieldEnum]
 
 
 export const SortOrder = {

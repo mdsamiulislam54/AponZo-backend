@@ -1,0 +1,23 @@
+model Category {
+  id        String          @id @default(cuid())
+  name      String          @unique
+  slug      String?
+  icon      String?
+  status    CategoryStatus  @default(ACTIVE)
+
+  parentId  String?         
+  parent    Category?      @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children  Category[]     @relation("CategoryHierarchy")
+
+  isDeleted Boolean         @default(false)
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+
+  @@map("category")
+
+}
+
+enum CategoryStatus {
+  ACTIVE
+  INACTIVE
+}
