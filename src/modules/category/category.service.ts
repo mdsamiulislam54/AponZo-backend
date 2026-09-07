@@ -11,9 +11,24 @@ const createCategory = async (category: CategoryInput) => {
 
 const getCategoryWithParentAndChildren = async () => {
     return await prisma.category.findMany({
+        where: {
+            parentId: null,
+            isDeleted: false,
+        },
         include: {
             parent: true,
-            children: true
+            children: {
+                where: {
+                    isDeleted: false,
+                },
+                include: {
+                    children: {
+                        where: {
+                            isDeleted: false,
+                        }
+                    }
+                }
+            }
         }
     })
 
@@ -21,9 +36,23 @@ const getCategoryWithParentAndChildren = async () => {
 
 const getCategoryWithParent = async () => {
     return await prisma.category.findMany({
+        where: {
+            parent: null,
+            isDeleted: false
+        },
         include: {
             parent: true
         }
+    })
+}
+
+const getCategoryWithChildren = async () => {
+    return await prisma.category.findMany({
+        where: {
+            parentId: {not : null},
+            isDeleted: false
+        },
+      
     })
 }
 
@@ -41,7 +70,7 @@ const deleteCategory = async (id: string) => {
         },
         include: {
             children: {
-                select: {
+                where: {
                     isDeleted: false
                 }
             },
@@ -85,6 +114,7 @@ export const categoryService = {
     updateCategory,
     deleteCategory,
     getCategoryWithParentAndChildren,
-    getCategoryWithParent
+    getCategoryWithParent,
+    getCategoryWithChildren
 
 }
