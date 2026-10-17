@@ -1286,6 +1286,7 @@ export const StoresScalarFieldEnum = {
   outsideDeliveryDay: 'outsideDeliveryDay',
   totalSales: 'totalSales',
   sellerId: 'sellerId',
+  isDeleted: 'isDeleted',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -1537,20 +1538,6 @@ export type EnumStore_StatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pri
  * Reference to a field of type 'Store_Status[]'
  */
 export type ListEnumStore_StatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Store_Status[]'>
-    
-
-
-/**
- * Reference to a field of type 'Decimal'
- */
-export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-/**
- * Reference to a field of type 'Decimal[]'
- */
-export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 /**

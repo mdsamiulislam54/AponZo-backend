@@ -32,11 +32,11 @@ export type StoresAvgAggregateOutputType = {
   totalOrders: number | null
   totalProducts: number | null
   totalSoldItems: number | null
-  insideDeliveryFee: runtime.Decimal | null
-  outsideDeliveryFee: runtime.Decimal | null
+  insideDeliveryFee: number | null
+  outsideDeliveryFee: number | null
   insideDeliveryDay: number | null
   outsideDeliveryDay: number | null
-  totalSales: runtime.Decimal | null
+  totalSales: number | null
 }
 
 export type StoresSumAggregateOutputType = {
@@ -45,11 +45,11 @@ export type StoresSumAggregateOutputType = {
   totalOrders: number | null
   totalProducts: number | null
   totalSoldItems: number | null
-  insideDeliveryFee: runtime.Decimal | null
-  outsideDeliveryFee: runtime.Decimal | null
+  insideDeliveryFee: number | null
+  outsideDeliveryFee: number | null
   insideDeliveryDay: number | null
   outsideDeliveryDay: number | null
-  totalSales: runtime.Decimal | null
+  totalSales: number | null
 }
 
 export type StoresMinAggregateOutputType = {
@@ -67,12 +67,13 @@ export type StoresMinAggregateOutputType = {
   totalOrders: number | null
   totalProducts: number | null
   totalSoldItems: number | null
-  insideDeliveryFee: runtime.Decimal | null
-  outsideDeliveryFee: runtime.Decimal | null
+  insideDeliveryFee: number | null
+  outsideDeliveryFee: number | null
   insideDeliveryDay: number | null
   outsideDeliveryDay: number | null
-  totalSales: runtime.Decimal | null
+  totalSales: number | null
   sellerId: string | null
+  isDeleted: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -92,12 +93,13 @@ export type StoresMaxAggregateOutputType = {
   totalOrders: number | null
   totalProducts: number | null
   totalSoldItems: number | null
-  insideDeliveryFee: runtime.Decimal | null
-  outsideDeliveryFee: runtime.Decimal | null
+  insideDeliveryFee: number | null
+  outsideDeliveryFee: number | null
   insideDeliveryDay: number | null
   outsideDeliveryDay: number | null
-  totalSales: runtime.Decimal | null
+  totalSales: number | null
   sellerId: string | null
+  isDeleted: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -123,6 +125,7 @@ export type StoresCountAggregateOutputType = {
   outsideDeliveryDay: number
   totalSales: number
   sellerId: number
+  isDeleted: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -176,6 +179,7 @@ export type StoresMinAggregateInputType = {
   outsideDeliveryDay?: true
   totalSales?: true
   sellerId?: true
+  isDeleted?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -201,6 +205,7 @@ export type StoresMaxAggregateInputType = {
   outsideDeliveryDay?: true
   totalSales?: true
   sellerId?: true
+  isDeleted?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -226,6 +231,7 @@ export type StoresCountAggregateInputType = {
   outsideDeliveryDay?: true
   totalSales?: true
   sellerId?: true
+  isDeleted?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -332,12 +338,13 @@ export type StoresGroupByOutputType = {
   totalOrders: number
   totalProducts: number
   totalSoldItems: number
-  insideDeliveryFee: runtime.Decimal
-  outsideDeliveryFee: runtime.Decimal
+  insideDeliveryFee: number
+  outsideDeliveryFee: number
   insideDeliveryDay: number
   outsideDeliveryDay: number
-  totalSales: runtime.Decimal
+  totalSales: number
   sellerId: string
+  isDeleted: boolean
   createdAt: Date
   updatedAt: Date
   _count: StoresCountAggregateOutputType | null
@@ -380,12 +387,13 @@ export type StoresWhereInput = {
   totalOrders?: Prisma.IntFilter<"Stores"> | number
   totalProducts?: Prisma.IntFilter<"Stores"> | number
   totalSoldItems?: Prisma.IntFilter<"Stores"> | number
-  insideDeliveryFee?: Prisma.DecimalFilter<"Stores"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  outsideDeliveryFee?: Prisma.DecimalFilter<"Stores"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  insideDeliveryFee?: Prisma.FloatFilter<"Stores"> | number
+  outsideDeliveryFee?: Prisma.FloatFilter<"Stores"> | number
   insideDeliveryDay?: Prisma.IntFilter<"Stores"> | number
   outsideDeliveryDay?: Prisma.IntFilter<"Stores"> | number
-  totalSales?: Prisma.DecimalFilter<"Stores"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalSales?: Prisma.FloatFilter<"Stores"> | number
   sellerId?: Prisma.StringFilter<"Stores"> | string
+  isDeleted?: Prisma.BoolFilter<"Stores"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Stores"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Stores"> | Date | string
   seller?: Prisma.XOR<Prisma.SellerScalarRelationFilter, Prisma.SellerWhereInput>
@@ -412,6 +420,7 @@ export type StoresOrderByWithRelationInput = {
   outsideDeliveryDay?: Prisma.SortOrder
   totalSales?: Prisma.SortOrder
   sellerId?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   seller?: Prisma.SellerOrderByWithRelationInput
@@ -436,11 +445,12 @@ export type StoresWhereUniqueInput = Prisma.AtLeast<{
   totalOrders?: Prisma.IntFilter<"Stores"> | number
   totalProducts?: Prisma.IntFilter<"Stores"> | number
   totalSoldItems?: Prisma.IntFilter<"Stores"> | number
-  insideDeliveryFee?: Prisma.DecimalFilter<"Stores"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  outsideDeliveryFee?: Prisma.DecimalFilter<"Stores"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  insideDeliveryFee?: Prisma.FloatFilter<"Stores"> | number
+  outsideDeliveryFee?: Prisma.FloatFilter<"Stores"> | number
   insideDeliveryDay?: Prisma.IntFilter<"Stores"> | number
   outsideDeliveryDay?: Prisma.IntFilter<"Stores"> | number
-  totalSales?: Prisma.DecimalFilter<"Stores"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalSales?: Prisma.FloatFilter<"Stores"> | number
+  isDeleted?: Prisma.BoolFilter<"Stores"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Stores"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Stores"> | Date | string
   seller?: Prisma.XOR<Prisma.SellerScalarRelationFilter, Prisma.SellerWhereInput>
@@ -467,6 +477,7 @@ export type StoresOrderByWithAggregationInput = {
   outsideDeliveryDay?: Prisma.SortOrder
   totalSales?: Prisma.SortOrder
   sellerId?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.StoresCountOrderByAggregateInput
@@ -494,12 +505,13 @@ export type StoresScalarWhereWithAggregatesInput = {
   totalOrders?: Prisma.IntWithAggregatesFilter<"Stores"> | number
   totalProducts?: Prisma.IntWithAggregatesFilter<"Stores"> | number
   totalSoldItems?: Prisma.IntWithAggregatesFilter<"Stores"> | number
-  insideDeliveryFee?: Prisma.DecimalWithAggregatesFilter<"Stores"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  outsideDeliveryFee?: Prisma.DecimalWithAggregatesFilter<"Stores"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  insideDeliveryFee?: Prisma.FloatWithAggregatesFilter<"Stores"> | number
+  outsideDeliveryFee?: Prisma.FloatWithAggregatesFilter<"Stores"> | number
   insideDeliveryDay?: Prisma.IntWithAggregatesFilter<"Stores"> | number
   outsideDeliveryDay?: Prisma.IntWithAggregatesFilter<"Stores"> | number
-  totalSales?: Prisma.DecimalWithAggregatesFilter<"Stores"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalSales?: Prisma.FloatWithAggregatesFilter<"Stores"> | number
   sellerId?: Prisma.StringWithAggregatesFilter<"Stores"> | string
+  isDeleted?: Prisma.BoolWithAggregatesFilter<"Stores"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Stores"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Stores"> | Date | string
 }
@@ -519,11 +531,12 @@ export type StoresCreateInput = {
   totalOrders?: number
   totalProducts?: number
   totalSoldItems?: number
-  insideDeliveryFee?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  outsideDeliveryFee?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  insideDeliveryFee?: number
+  outsideDeliveryFee?: number
   insideDeliveryDay?: number
   outsideDeliveryDay?: number
-  totalSales?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalSales?: number
+  isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   seller: Prisma.SellerCreateNestedOneWithoutStoreInput
@@ -544,12 +557,13 @@ export type StoresUncheckedCreateInput = {
   totalOrders?: number
   totalProducts?: number
   totalSoldItems?: number
-  insideDeliveryFee?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  outsideDeliveryFee?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  insideDeliveryFee?: number
+  outsideDeliveryFee?: number
   insideDeliveryDay?: number
   outsideDeliveryDay?: number
-  totalSales?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalSales?: number
   sellerId: string
+  isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -569,11 +583,12 @@ export type StoresUpdateInput = {
   totalOrders?: Prisma.IntFieldUpdateOperationsInput | number
   totalProducts?: Prisma.IntFieldUpdateOperationsInput | number
   totalSoldItems?: Prisma.IntFieldUpdateOperationsInput | number
-  insideDeliveryFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  outsideDeliveryFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  insideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  outsideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
   insideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
   outsideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
-  totalSales?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalSales?: Prisma.FloatFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   seller?: Prisma.SellerUpdateOneRequiredWithoutStoreNestedInput
@@ -594,12 +609,13 @@ export type StoresUncheckedUpdateInput = {
   totalOrders?: Prisma.IntFieldUpdateOperationsInput | number
   totalProducts?: Prisma.IntFieldUpdateOperationsInput | number
   totalSoldItems?: Prisma.IntFieldUpdateOperationsInput | number
-  insideDeliveryFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  outsideDeliveryFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  insideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  outsideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
   insideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
   outsideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
-  totalSales?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalSales?: Prisma.FloatFieldUpdateOperationsInput | number
   sellerId?: Prisma.StringFieldUpdateOperationsInput | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -619,12 +635,13 @@ export type StoresCreateManyInput = {
   totalOrders?: number
   totalProducts?: number
   totalSoldItems?: number
-  insideDeliveryFee?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  outsideDeliveryFee?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  insideDeliveryFee?: number
+  outsideDeliveryFee?: number
   insideDeliveryDay?: number
   outsideDeliveryDay?: number
-  totalSales?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalSales?: number
   sellerId: string
+  isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -644,11 +661,12 @@ export type StoresUpdateManyMutationInput = {
   totalOrders?: Prisma.IntFieldUpdateOperationsInput | number
   totalProducts?: Prisma.IntFieldUpdateOperationsInput | number
   totalSoldItems?: Prisma.IntFieldUpdateOperationsInput | number
-  insideDeliveryFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  outsideDeliveryFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  insideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  outsideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
   insideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
   outsideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
-  totalSales?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalSales?: Prisma.FloatFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -668,12 +686,13 @@ export type StoresUncheckedUpdateManyInput = {
   totalOrders?: Prisma.IntFieldUpdateOperationsInput | number
   totalProducts?: Prisma.IntFieldUpdateOperationsInput | number
   totalSoldItems?: Prisma.IntFieldUpdateOperationsInput | number
-  insideDeliveryFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  outsideDeliveryFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  insideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  outsideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
   insideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
   outsideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
-  totalSales?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalSales?: Prisma.FloatFieldUpdateOperationsInput | number
   sellerId?: Prisma.StringFieldUpdateOperationsInput | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -704,6 +723,7 @@ export type StoresCountOrderByAggregateInput = {
   outsideDeliveryDay?: Prisma.SortOrder
   totalSales?: Prisma.SortOrder
   sellerId?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -742,6 +762,7 @@ export type StoresMaxOrderByAggregateInput = {
   outsideDeliveryDay?: Prisma.SortOrder
   totalSales?: Prisma.SortOrder
   sellerId?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -767,6 +788,7 @@ export type StoresMinOrderByAggregateInput = {
   outsideDeliveryDay?: Prisma.SortOrder
   totalSales?: Prisma.SortOrder
   sellerId?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -824,14 +846,6 @@ export type EnumStore_StatusFieldUpdateOperationsInput = {
   set?: $Enums.Store_Status
 }
 
-export type DecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
-}
-
 export type StoresCreateWithoutSellerInput = {
   id?: string
   name: string
@@ -847,11 +861,12 @@ export type StoresCreateWithoutSellerInput = {
   totalOrders?: number
   totalProducts?: number
   totalSoldItems?: number
-  insideDeliveryFee?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  outsideDeliveryFee?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  insideDeliveryFee?: number
+  outsideDeliveryFee?: number
   insideDeliveryDay?: number
   outsideDeliveryDay?: number
-  totalSales?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalSales?: number
+  isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -871,11 +886,12 @@ export type StoresUncheckedCreateWithoutSellerInput = {
   totalOrders?: number
   totalProducts?: number
   totalSoldItems?: number
-  insideDeliveryFee?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  outsideDeliveryFee?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  insideDeliveryFee?: number
+  outsideDeliveryFee?: number
   insideDeliveryDay?: number
   outsideDeliveryDay?: number
-  totalSales?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalSales?: number
+  isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -911,11 +927,12 @@ export type StoresUpdateWithoutSellerInput = {
   totalOrders?: Prisma.IntFieldUpdateOperationsInput | number
   totalProducts?: Prisma.IntFieldUpdateOperationsInput | number
   totalSoldItems?: Prisma.IntFieldUpdateOperationsInput | number
-  insideDeliveryFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  outsideDeliveryFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  insideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  outsideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
   insideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
   outsideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
-  totalSales?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalSales?: Prisma.FloatFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -935,11 +952,12 @@ export type StoresUncheckedUpdateWithoutSellerInput = {
   totalOrders?: Prisma.IntFieldUpdateOperationsInput | number
   totalProducts?: Prisma.IntFieldUpdateOperationsInput | number
   totalSoldItems?: Prisma.IntFieldUpdateOperationsInput | number
-  insideDeliveryFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  outsideDeliveryFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  insideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  outsideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
   insideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
   outsideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
-  totalSales?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalSales?: Prisma.FloatFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -967,6 +985,7 @@ export type StoresSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   outsideDeliveryDay?: boolean
   totalSales?: boolean
   sellerId?: boolean
+  isDeleted?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   seller?: boolean | Prisma.SellerDefaultArgs<ExtArgs>
@@ -993,6 +1012,7 @@ export type StoresSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   outsideDeliveryDay?: boolean
   totalSales?: boolean
   sellerId?: boolean
+  isDeleted?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   seller?: boolean | Prisma.SellerDefaultArgs<ExtArgs>
@@ -1019,6 +1039,7 @@ export type StoresSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   outsideDeliveryDay?: boolean
   totalSales?: boolean
   sellerId?: boolean
+  isDeleted?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   seller?: boolean | Prisma.SellerDefaultArgs<ExtArgs>
@@ -1045,11 +1066,12 @@ export type StoresSelectScalar = {
   outsideDeliveryDay?: boolean
   totalSales?: boolean
   sellerId?: boolean
+  isDeleted?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type StoresOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug" | "description" | "logo" | "banner" | "type" | "status" | "isVerified" | "rating" | "totalReviews" | "totalOrders" | "totalProducts" | "totalSoldItems" | "insideDeliveryFee" | "outsideDeliveryFee" | "insideDeliveryDay" | "outsideDeliveryDay" | "totalSales" | "sellerId" | "createdAt" | "updatedAt", ExtArgs["result"]["stores"]>
+export type StoresOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug" | "description" | "logo" | "banner" | "type" | "status" | "isVerified" | "rating" | "totalReviews" | "totalOrders" | "totalProducts" | "totalSoldItems" | "insideDeliveryFee" | "outsideDeliveryFee" | "insideDeliveryDay" | "outsideDeliveryDay" | "totalSales" | "sellerId" | "isDeleted" | "createdAt" | "updatedAt", ExtArgs["result"]["stores"]>
 export type StoresInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   seller?: boolean | Prisma.SellerDefaultArgs<ExtArgs>
 }
@@ -1080,12 +1102,13 @@ export type $StoresPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     totalOrders: number
     totalProducts: number
     totalSoldItems: number
-    insideDeliveryFee: runtime.Decimal
-    outsideDeliveryFee: runtime.Decimal
+    insideDeliveryFee: number
+    outsideDeliveryFee: number
     insideDeliveryDay: number
     outsideDeliveryDay: number
-    totalSales: runtime.Decimal
+    totalSales: number
     sellerId: string
+    isDeleted: boolean
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["stores"]>
@@ -1526,12 +1549,13 @@ export interface StoresFieldRefs {
   readonly totalOrders: Prisma.FieldRef<"Stores", 'Int'>
   readonly totalProducts: Prisma.FieldRef<"Stores", 'Int'>
   readonly totalSoldItems: Prisma.FieldRef<"Stores", 'Int'>
-  readonly insideDeliveryFee: Prisma.FieldRef<"Stores", 'Decimal'>
-  readonly outsideDeliveryFee: Prisma.FieldRef<"Stores", 'Decimal'>
+  readonly insideDeliveryFee: Prisma.FieldRef<"Stores", 'Float'>
+  readonly outsideDeliveryFee: Prisma.FieldRef<"Stores", 'Float'>
   readonly insideDeliveryDay: Prisma.FieldRef<"Stores", 'Int'>
   readonly outsideDeliveryDay: Prisma.FieldRef<"Stores", 'Int'>
-  readonly totalSales: Prisma.FieldRef<"Stores", 'Decimal'>
+  readonly totalSales: Prisma.FieldRef<"Stores", 'Float'>
   readonly sellerId: Prisma.FieldRef<"Stores", 'String'>
+  readonly isDeleted: Prisma.FieldRef<"Stores", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Stores", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Stores", 'DateTime'>
 }

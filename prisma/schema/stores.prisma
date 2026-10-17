@@ -13,13 +13,14 @@ model Stores {
   totalOrders        Int           @default(0)
   totalProducts      Int           @default(0)
   totalSoldItems     Int           @default(0)
-  insideDeliveryFee  Decimal       @default(0.0)
-  outsideDeliveryFee Decimal       @default(0.0)
+  insideDeliveryFee  Float         @default(0.0)
+  outsideDeliveryFee Float         @default(0.0)
   insideDeliveryDay  Int           @default(0)
   outsideDeliveryDay Int           @default(0)
-  totalSales         Decimal       @default(0.0)
+  totalSales         Float         @default(0.0)
   sellerId           String        @unique
   seller             Seller       @relation(fields: [sellerId], references: [id],onDelete: Cascade, onUpdate: Cascade)
+  isDeleted          Boolean       @default(false)
   createdAt          DateTime      @default(now())
   updatedAt          DateTime      @updatedAt
 }
@@ -37,3 +38,4 @@ enum Store_Status {
     SUSPENDED
     BANDED
 }
+

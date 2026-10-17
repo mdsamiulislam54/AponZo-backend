@@ -234,6 +234,7 @@ export const StoresScalarFieldEnum = {
   outsideDeliveryDay: 'outsideDeliveryDay',
   totalSales: 'totalSales',
   sellerId: 'sellerId',
+  isDeleted: 'isDeleted',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
