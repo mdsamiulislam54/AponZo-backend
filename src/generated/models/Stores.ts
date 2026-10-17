@@ -397,6 +397,7 @@ export type StoresWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Stores"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Stores"> | Date | string
   seller?: Prisma.XOR<Prisma.SellerScalarRelationFilter, Prisma.SellerWhereInput>
+  Products?: Prisma.ProductsListRelationFilter
 }
 
 export type StoresOrderByWithRelationInput = {
@@ -424,6 +425,7 @@ export type StoresOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   seller?: Prisma.SellerOrderByWithRelationInput
+  Products?: Prisma.ProductsOrderByRelationAggregateInput
 }
 
 export type StoresWhereUniqueInput = Prisma.AtLeast<{
@@ -454,6 +456,7 @@ export type StoresWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Stores"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Stores"> | Date | string
   seller?: Prisma.XOR<Prisma.SellerScalarRelationFilter, Prisma.SellerWhereInput>
+  Products?: Prisma.ProductsListRelationFilter
 }, "id" | "slug" | "sellerId">
 
 export type StoresOrderByWithAggregationInput = {
@@ -540,6 +543,7 @@ export type StoresCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   seller: Prisma.SellerCreateNestedOneWithoutStoreInput
+  Products?: Prisma.ProductsCreateNestedManyWithoutStoreInput
 }
 
 export type StoresUncheckedCreateInput = {
@@ -566,6 +570,7 @@ export type StoresUncheckedCreateInput = {
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  Products?: Prisma.ProductsUncheckedCreateNestedManyWithoutStoreInput
 }
 
 export type StoresUpdateInput = {
@@ -592,6 +597,7 @@ export type StoresUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   seller?: Prisma.SellerUpdateOneRequiredWithoutStoreNestedInput
+  Products?: Prisma.ProductsUpdateManyWithoutStoreNestedInput
 }
 
 export type StoresUncheckedUpdateInput = {
@@ -618,6 +624,7 @@ export type StoresUncheckedUpdateInput = {
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Products?: Prisma.ProductsUncheckedUpdateManyWithoutStoreNestedInput
 }
 
 export type StoresCreateManyInput = {
@@ -695,6 +702,11 @@ export type StoresUncheckedUpdateManyInput = {
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type StoresScalarRelationFilter = {
+  is?: Prisma.StoresWhereInput
+  isNot?: Prisma.StoresWhereInput
 }
 
 export type StoresNullableScalarRelationFilter = {
@@ -806,6 +818,20 @@ export type StoresSumOrderByAggregateInput = {
   totalSales?: Prisma.SortOrder
 }
 
+export type StoresCreateNestedOneWithoutProductsInput = {
+  create?: Prisma.XOR<Prisma.StoresCreateWithoutProductsInput, Prisma.StoresUncheckedCreateWithoutProductsInput>
+  connectOrCreate?: Prisma.StoresCreateOrConnectWithoutProductsInput
+  connect?: Prisma.StoresWhereUniqueInput
+}
+
+export type StoresUpdateOneRequiredWithoutProductsNestedInput = {
+  create?: Prisma.XOR<Prisma.StoresCreateWithoutProductsInput, Prisma.StoresUncheckedCreateWithoutProductsInput>
+  connectOrCreate?: Prisma.StoresCreateOrConnectWithoutProductsInput
+  upsert?: Prisma.StoresUpsertWithoutProductsInput
+  connect?: Prisma.StoresWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StoresUpdateToOneWithWhereWithoutProductsInput, Prisma.StoresUpdateWithoutProductsInput>, Prisma.StoresUncheckedUpdateWithoutProductsInput>
+}
+
 export type StoresCreateNestedOneWithoutSellerInput = {
   create?: Prisma.XOR<Prisma.StoresCreateWithoutSellerInput, Prisma.StoresUncheckedCreateWithoutSellerInput>
   connectOrCreate?: Prisma.StoresCreateOrConnectWithoutSellerInput
@@ -846,6 +872,126 @@ export type EnumStore_StatusFieldUpdateOperationsInput = {
   set?: $Enums.Store_Status
 }
 
+export type StoresCreateWithoutProductsInput = {
+  id?: string
+  name: string
+  slug?: string | null
+  description?: string | null
+  logo?: string | null
+  banner?: string | null
+  type?: $Enums.Stores_Type
+  status?: $Enums.Store_Status
+  isVerified?: boolean
+  rating?: number
+  totalReviews?: number
+  totalOrders?: number
+  totalProducts?: number
+  totalSoldItems?: number
+  insideDeliveryFee?: number
+  outsideDeliveryFee?: number
+  insideDeliveryDay?: number
+  outsideDeliveryDay?: number
+  totalSales?: number
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  seller: Prisma.SellerCreateNestedOneWithoutStoreInput
+}
+
+export type StoresUncheckedCreateWithoutProductsInput = {
+  id?: string
+  name: string
+  slug?: string | null
+  description?: string | null
+  logo?: string | null
+  banner?: string | null
+  type?: $Enums.Stores_Type
+  status?: $Enums.Store_Status
+  isVerified?: boolean
+  rating?: number
+  totalReviews?: number
+  totalOrders?: number
+  totalProducts?: number
+  totalSoldItems?: number
+  insideDeliveryFee?: number
+  outsideDeliveryFee?: number
+  insideDeliveryDay?: number
+  outsideDeliveryDay?: number
+  totalSales?: number
+  sellerId: string
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type StoresCreateOrConnectWithoutProductsInput = {
+  where: Prisma.StoresWhereUniqueInput
+  create: Prisma.XOR<Prisma.StoresCreateWithoutProductsInput, Prisma.StoresUncheckedCreateWithoutProductsInput>
+}
+
+export type StoresUpsertWithoutProductsInput = {
+  update: Prisma.XOR<Prisma.StoresUpdateWithoutProductsInput, Prisma.StoresUncheckedUpdateWithoutProductsInput>
+  create: Prisma.XOR<Prisma.StoresCreateWithoutProductsInput, Prisma.StoresUncheckedCreateWithoutProductsInput>
+  where?: Prisma.StoresWhereInput
+}
+
+export type StoresUpdateToOneWithWhereWithoutProductsInput = {
+  where?: Prisma.StoresWhereInput
+  data: Prisma.XOR<Prisma.StoresUpdateWithoutProductsInput, Prisma.StoresUncheckedUpdateWithoutProductsInput>
+}
+
+export type StoresUpdateWithoutProductsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumStores_TypeFieldUpdateOperationsInput | $Enums.Stores_Type
+  status?: Prisma.EnumStore_StatusFieldUpdateOperationsInput | $Enums.Store_Status
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalReviews?: Prisma.IntFieldUpdateOperationsInput | number
+  totalOrders?: Prisma.IntFieldUpdateOperationsInput | number
+  totalProducts?: Prisma.IntFieldUpdateOperationsInput | number
+  totalSoldItems?: Prisma.IntFieldUpdateOperationsInput | number
+  insideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  outsideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  insideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
+  outsideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
+  totalSales?: Prisma.FloatFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  seller?: Prisma.SellerUpdateOneRequiredWithoutStoreNestedInput
+}
+
+export type StoresUncheckedUpdateWithoutProductsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumStores_TypeFieldUpdateOperationsInput | $Enums.Stores_Type
+  status?: Prisma.EnumStore_StatusFieldUpdateOperationsInput | $Enums.Store_Status
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalReviews?: Prisma.IntFieldUpdateOperationsInput | number
+  totalOrders?: Prisma.IntFieldUpdateOperationsInput | number
+  totalProducts?: Prisma.IntFieldUpdateOperationsInput | number
+  totalSoldItems?: Prisma.IntFieldUpdateOperationsInput | number
+  insideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  outsideDeliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  insideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
+  outsideDeliveryDay?: Prisma.IntFieldUpdateOperationsInput | number
+  totalSales?: Prisma.FloatFieldUpdateOperationsInput | number
+  sellerId?: Prisma.StringFieldUpdateOperationsInput | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 export type StoresCreateWithoutSellerInput = {
   id?: string
   name: string
@@ -869,6 +1015,7 @@ export type StoresCreateWithoutSellerInput = {
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  Products?: Prisma.ProductsCreateNestedManyWithoutStoreInput
 }
 
 export type StoresUncheckedCreateWithoutSellerInput = {
@@ -894,6 +1041,7 @@ export type StoresUncheckedCreateWithoutSellerInput = {
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  Products?: Prisma.ProductsUncheckedCreateNestedManyWithoutStoreInput
 }
 
 export type StoresCreateOrConnectWithoutSellerInput = {
@@ -935,6 +1083,7 @@ export type StoresUpdateWithoutSellerInput = {
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Products?: Prisma.ProductsUpdateManyWithoutStoreNestedInput
 }
 
 export type StoresUncheckedUpdateWithoutSellerInput = {
@@ -960,8 +1109,38 @@ export type StoresUncheckedUpdateWithoutSellerInput = {
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Products?: Prisma.ProductsUncheckedUpdateManyWithoutStoreNestedInput
 }
 
+
+/**
+ * Count Type StoresCountOutputType
+ */
+
+export type StoresCountOutputType = {
+  Products: number
+}
+
+export type StoresCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  Products?: boolean | StoresCountOutputTypeCountProductsArgs
+}
+
+/**
+ * StoresCountOutputType without action
+ */
+export type StoresCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StoresCountOutputType
+   */
+  select?: Prisma.StoresCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * StoresCountOutputType without action
+ */
+export type StoresCountOutputTypeCountProductsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProductsWhereInput
+}
 
 
 export type StoresSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -989,6 +1168,8 @@ export type StoresSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   createdAt?: boolean
   updatedAt?: boolean
   seller?: boolean | Prisma.SellerDefaultArgs<ExtArgs>
+  Products?: boolean | Prisma.Stores$ProductsArgs<ExtArgs>
+  _count?: boolean | Prisma.StoresCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["stores"]>
 
 export type StoresSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1074,6 +1255,8 @@ export type StoresSelectScalar = {
 export type StoresOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug" | "description" | "logo" | "banner" | "type" | "status" | "isVerified" | "rating" | "totalReviews" | "totalOrders" | "totalProducts" | "totalSoldItems" | "insideDeliveryFee" | "outsideDeliveryFee" | "insideDeliveryDay" | "outsideDeliveryDay" | "totalSales" | "sellerId" | "isDeleted" | "createdAt" | "updatedAt", ExtArgs["result"]["stores"]>
 export type StoresInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   seller?: boolean | Prisma.SellerDefaultArgs<ExtArgs>
+  Products?: boolean | Prisma.Stores$ProductsArgs<ExtArgs>
+  _count?: boolean | Prisma.StoresCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type StoresIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   seller?: boolean | Prisma.SellerDefaultArgs<ExtArgs>
@@ -1086,6 +1269,7 @@ export type $StoresPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   name: "Stores"
   objects: {
     seller: Prisma.$SellerPayload<ExtArgs>
+    Products: Prisma.$ProductsPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1506,6 +1690,7 @@ readonly fields: StoresFieldRefs;
 export interface Prisma__StoresClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   seller<T extends Prisma.SellerDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SellerDefaultArgs<ExtArgs>>): Prisma.Prisma__SellerClient<runtime.Types.Result.GetResult<Prisma.$SellerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  Products<T extends Prisma.Stores$ProductsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Stores$ProductsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1956,6 +2141,30 @@ export type StoresDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Limit how many Stores to delete.
    */
   limit?: number
+}
+
+/**
+ * Stores.Products
+ */
+export type Stores$ProductsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Products
+   */
+  select?: Prisma.ProductsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Products
+   */
+  omit?: Prisma.ProductsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProductsInclude<ExtArgs> | null
+  where?: Prisma.ProductsWhereInput
+  orderBy?: Prisma.ProductsOrderByWithRelationInput | Prisma.ProductsOrderByWithRelationInput[]
+  cursor?: Prisma.ProductsWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProductsScalarFieldEnum | Prisma.ProductsScalarFieldEnum[]
 }
 
 /**

@@ -56,6 +56,8 @@ export const ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   Category: 'Category',
+  Products: 'Products',
+  Products_Specification: 'Products_Specification',
   Seller: 'Seller',
   SellerAddress: 'SellerAddress',
   SellerDocument: 'SellerDocument',
@@ -155,6 +157,44 @@ export const CategoryScalarFieldEnum = {
 } as const
 
 export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
+export const ProductsScalarFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  categoryId: 'categoryId',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  brand: 'brand',
+  tags: 'tags',
+  basePrice: 'basePrice',
+  discountPrice: 'discountPrice',
+  features: 'features',
+  images: 'images',
+  shippingFee: 'shippingFee',
+  isShippingFree: 'isShippingFree',
+  stock: 'stock',
+  isFeatured: 'isFeatured',
+  isDeleted: 'isDeleted',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProductsScalarFieldEnum = (typeof ProductsScalarFieldEnum)[keyof typeof ProductsScalarFieldEnum]
+
+
+export const Products_SpecificationScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  key: 'key',
+  value: 'value',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Products_SpecificationScalarFieldEnum = (typeof Products_SpecificationScalarFieldEnum)[keyof typeof Products_SpecificationScalarFieldEnum]
 
 
 export const SellerScalarFieldEnum = {

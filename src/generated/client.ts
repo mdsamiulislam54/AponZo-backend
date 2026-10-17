@@ -67,6 +67,16 @@ export type Verification = Prisma.VerificationModel
  */
 export type Category = Prisma.CategoryModel
 /**
+ * Model Products
+ * 
+ */
+export type Products = Prisma.ProductsModel
+/**
+ * Model Products_Specification
+ * 
+ */
+export type Products_Specification = Prisma.Products_SpecificationModel
+/**
  * Model Seller
  * 
  */

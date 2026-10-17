@@ -34,6 +34,18 @@ export const CategoryStatus = {
 export type CategoryStatus = (typeof CategoryStatus)[keyof typeof CategoryStatus]
 
 
+export const PRODUCT_STATUS = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  OUT_OF_STOCK: 'OUT_OF_STOCK',
+  ARCHIVED: 'ARCHIVED',
+  DRAFT: 'DRAFT'
+} as const
+
+export type PRODUCT_STATUS = (typeof PRODUCT_STATUS)[keyof typeof PRODUCT_STATUS]
+
+
 export const SELLER_STATUS = {
   PENDING: 'PENDING',
   APPROVED: 'APPROVED',

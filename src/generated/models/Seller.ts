@@ -592,22 +592,6 @@ export type EnumVERIFICATION_STATUSFieldUpdateOperationsInput = {
   set?: $Enums.VERIFICATION_STATUS
 }
 
-export type FloatFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type SellerCreateNestedOneWithoutSellerAddressInput = {
   create?: Prisma.XOR<Prisma.SellerCreateWithoutSellerAddressInput, Prisma.SellerUncheckedCreateWithoutSellerAddressInput>
   connectOrCreate?: Prisma.SellerCreateOrConnectWithoutSellerAddressInput

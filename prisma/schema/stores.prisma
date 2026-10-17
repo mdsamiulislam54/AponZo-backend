@@ -20,6 +20,7 @@ model Stores {
   totalSales         Float         @default(0.0)
   sellerId           String        @unique
   seller             Seller       @relation(fields: [sellerId], references: [id],onDelete: Cascade, onUpdate: Cascade)
+  Products           Products[]
   isDeleted          Boolean       @default(false)
   createdAt          DateTime      @default(now())
   updatedAt          DateTime      @updatedAt

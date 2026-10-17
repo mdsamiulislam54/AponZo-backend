@@ -1,0 +1,10 @@
+model Products_Variant {
+    id       String    @id @default(cuid())
+    productId String
+    sku      String    @unique
+    color    String?
+    size     String?
+    price    Float
+    stock    Int
+    product  Products   @relation(fields: [productId], references: [id])
+}
