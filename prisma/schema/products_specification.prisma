@@ -11,3 +11,4 @@ model Products_Specification {
   @@index([productId])
   @@map("products_specifications")
 }
+

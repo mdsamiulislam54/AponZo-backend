@@ -57,6 +57,8 @@ export const ModelName = {
   Verification: 'Verification',
   Category: 'Category',
   Products: 'Products',
+  ProductImage: 'ProductImage',
+  Products_Variant: 'Products_Variant',
   Products_Specification: 'Products_Specification',
   Seller: 'Seller',
   SellerAddress: 'SellerAddress',
@@ -171,10 +173,8 @@ export const ProductsScalarFieldEnum = {
   basePrice: 'basePrice',
   discountPrice: 'discountPrice',
   features: 'features',
-  images: 'images',
   shippingFee: 'shippingFee',
   isShippingFree: 'isShippingFree',
-  stock: 'stock',
   isFeatured: 'isFeatured',
   isDeleted: 'isDeleted',
   status: 'status',
@@ -183,6 +183,32 @@ export const ProductsScalarFieldEnum = {
 } as const
 
 export type ProductsScalarFieldEnum = (typeof ProductsScalarFieldEnum)[keyof typeof ProductsScalarFieldEnum]
+
+
+export const ProductImageScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  publicId: 'publicId',
+  productId: 'productId',
+  createdAt: 'createdAt'
+} as const
+
+export type ProductImageScalarFieldEnum = (typeof ProductImageScalarFieldEnum)[keyof typeof ProductImageScalarFieldEnum]
+
+
+export const Products_VariantScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  sku: 'sku',
+  color: 'color',
+  size: 'size',
+  price: 'price',
+  stock: 'stock',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Products_VariantScalarFieldEnum = (typeof Products_VariantScalarFieldEnum)[keyof typeof Products_VariantScalarFieldEnum]
 
 
 export const Products_SpecificationScalarFieldEnum = {

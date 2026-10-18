@@ -190,6 +190,7 @@ export type Products_SpecificationWhereInput = {
   value?: Prisma.StringFilter<"Products_Specification"> | string
   createdAt?: Prisma.DateTimeFilter<"Products_Specification"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Products_Specification"> | Date | string
+  Product?: Prisma.XOR<Prisma.ProductsScalarRelationFilter, Prisma.ProductsWhereInput>
 }
 
 export type Products_SpecificationOrderByWithRelationInput = {
@@ -199,6 +200,7 @@ export type Products_SpecificationOrderByWithRelationInput = {
   value?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  Product?: Prisma.ProductsOrderByWithRelationInput
 }
 
 export type Products_SpecificationWhereUniqueInput = Prisma.AtLeast<{
@@ -211,6 +213,7 @@ export type Products_SpecificationWhereUniqueInput = Prisma.AtLeast<{
   value?: Prisma.StringFilter<"Products_Specification"> | string
   createdAt?: Prisma.DateTimeFilter<"Products_Specification"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Products_Specification"> | Date | string
+  Product?: Prisma.XOR<Prisma.ProductsScalarRelationFilter, Prisma.ProductsWhereInput>
 }, "id">
 
 export type Products_SpecificationOrderByWithAggregationInput = {
@@ -239,11 +242,11 @@ export type Products_SpecificationScalarWhereWithAggregatesInput = {
 
 export type Products_SpecificationCreateInput = {
   id?: string
-  productId: string
   key: string
   value: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  Product: Prisma.ProductsCreateNestedOneWithoutProducts_SpecificationInput
 }
 
 export type Products_SpecificationUncheckedCreateInput = {
@@ -257,11 +260,11 @@ export type Products_SpecificationUncheckedCreateInput = {
 
 export type Products_SpecificationUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  productId?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Product?: Prisma.ProductsUpdateOneRequiredWithoutProducts_SpecificationNestedInput
 }
 
 export type Products_SpecificationUncheckedUpdateInput = {
@@ -284,7 +287,6 @@ export type Products_SpecificationCreateManyInput = {
 
 export type Products_SpecificationUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  productId?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -298,6 +300,16 @@ export type Products_SpecificationUncheckedUpdateManyInput = {
   value?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type Products_SpecificationListRelationFilter = {
+  every?: Prisma.Products_SpecificationWhereInput
+  some?: Prisma.Products_SpecificationWhereInput
+  none?: Prisma.Products_SpecificationWhereInput
+}
+
+export type Products_SpecificationOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type Products_SpecificationCountOrderByAggregateInput = {
@@ -327,6 +339,134 @@ export type Products_SpecificationMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
+export type Products_SpecificationCreateNestedManyWithoutProductInput = {
+  create?: Prisma.XOR<Prisma.Products_SpecificationCreateWithoutProductInput, Prisma.Products_SpecificationUncheckedCreateWithoutProductInput> | Prisma.Products_SpecificationCreateWithoutProductInput[] | Prisma.Products_SpecificationUncheckedCreateWithoutProductInput[]
+  connectOrCreate?: Prisma.Products_SpecificationCreateOrConnectWithoutProductInput | Prisma.Products_SpecificationCreateOrConnectWithoutProductInput[]
+  createMany?: Prisma.Products_SpecificationCreateManyProductInputEnvelope
+  connect?: Prisma.Products_SpecificationWhereUniqueInput | Prisma.Products_SpecificationWhereUniqueInput[]
+}
+
+export type Products_SpecificationUncheckedCreateNestedManyWithoutProductInput = {
+  create?: Prisma.XOR<Prisma.Products_SpecificationCreateWithoutProductInput, Prisma.Products_SpecificationUncheckedCreateWithoutProductInput> | Prisma.Products_SpecificationCreateWithoutProductInput[] | Prisma.Products_SpecificationUncheckedCreateWithoutProductInput[]
+  connectOrCreate?: Prisma.Products_SpecificationCreateOrConnectWithoutProductInput | Prisma.Products_SpecificationCreateOrConnectWithoutProductInput[]
+  createMany?: Prisma.Products_SpecificationCreateManyProductInputEnvelope
+  connect?: Prisma.Products_SpecificationWhereUniqueInput | Prisma.Products_SpecificationWhereUniqueInput[]
+}
+
+export type Products_SpecificationUpdateManyWithoutProductNestedInput = {
+  create?: Prisma.XOR<Prisma.Products_SpecificationCreateWithoutProductInput, Prisma.Products_SpecificationUncheckedCreateWithoutProductInput> | Prisma.Products_SpecificationCreateWithoutProductInput[] | Prisma.Products_SpecificationUncheckedCreateWithoutProductInput[]
+  connectOrCreate?: Prisma.Products_SpecificationCreateOrConnectWithoutProductInput | Prisma.Products_SpecificationCreateOrConnectWithoutProductInput[]
+  upsert?: Prisma.Products_SpecificationUpsertWithWhereUniqueWithoutProductInput | Prisma.Products_SpecificationUpsertWithWhereUniqueWithoutProductInput[]
+  createMany?: Prisma.Products_SpecificationCreateManyProductInputEnvelope
+  set?: Prisma.Products_SpecificationWhereUniqueInput | Prisma.Products_SpecificationWhereUniqueInput[]
+  disconnect?: Prisma.Products_SpecificationWhereUniqueInput | Prisma.Products_SpecificationWhereUniqueInput[]
+  delete?: Prisma.Products_SpecificationWhereUniqueInput | Prisma.Products_SpecificationWhereUniqueInput[]
+  connect?: Prisma.Products_SpecificationWhereUniqueInput | Prisma.Products_SpecificationWhereUniqueInput[]
+  update?: Prisma.Products_SpecificationUpdateWithWhereUniqueWithoutProductInput | Prisma.Products_SpecificationUpdateWithWhereUniqueWithoutProductInput[]
+  updateMany?: Prisma.Products_SpecificationUpdateManyWithWhereWithoutProductInput | Prisma.Products_SpecificationUpdateManyWithWhereWithoutProductInput[]
+  deleteMany?: Prisma.Products_SpecificationScalarWhereInput | Prisma.Products_SpecificationScalarWhereInput[]
+}
+
+export type Products_SpecificationUncheckedUpdateManyWithoutProductNestedInput = {
+  create?: Prisma.XOR<Prisma.Products_SpecificationCreateWithoutProductInput, Prisma.Products_SpecificationUncheckedCreateWithoutProductInput> | Prisma.Products_SpecificationCreateWithoutProductInput[] | Prisma.Products_SpecificationUncheckedCreateWithoutProductInput[]
+  connectOrCreate?: Prisma.Products_SpecificationCreateOrConnectWithoutProductInput | Prisma.Products_SpecificationCreateOrConnectWithoutProductInput[]
+  upsert?: Prisma.Products_SpecificationUpsertWithWhereUniqueWithoutProductInput | Prisma.Products_SpecificationUpsertWithWhereUniqueWithoutProductInput[]
+  createMany?: Prisma.Products_SpecificationCreateManyProductInputEnvelope
+  set?: Prisma.Products_SpecificationWhereUniqueInput | Prisma.Products_SpecificationWhereUniqueInput[]
+  disconnect?: Prisma.Products_SpecificationWhereUniqueInput | Prisma.Products_SpecificationWhereUniqueInput[]
+  delete?: Prisma.Products_SpecificationWhereUniqueInput | Prisma.Products_SpecificationWhereUniqueInput[]
+  connect?: Prisma.Products_SpecificationWhereUniqueInput | Prisma.Products_SpecificationWhereUniqueInput[]
+  update?: Prisma.Products_SpecificationUpdateWithWhereUniqueWithoutProductInput | Prisma.Products_SpecificationUpdateWithWhereUniqueWithoutProductInput[]
+  updateMany?: Prisma.Products_SpecificationUpdateManyWithWhereWithoutProductInput | Prisma.Products_SpecificationUpdateManyWithWhereWithoutProductInput[]
+  deleteMany?: Prisma.Products_SpecificationScalarWhereInput | Prisma.Products_SpecificationScalarWhereInput[]
+}
+
+export type Products_SpecificationCreateWithoutProductInput = {
+  id?: string
+  key: string
+  value: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type Products_SpecificationUncheckedCreateWithoutProductInput = {
+  id?: string
+  key: string
+  value: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type Products_SpecificationCreateOrConnectWithoutProductInput = {
+  where: Prisma.Products_SpecificationWhereUniqueInput
+  create: Prisma.XOR<Prisma.Products_SpecificationCreateWithoutProductInput, Prisma.Products_SpecificationUncheckedCreateWithoutProductInput>
+}
+
+export type Products_SpecificationCreateManyProductInputEnvelope = {
+  data: Prisma.Products_SpecificationCreateManyProductInput | Prisma.Products_SpecificationCreateManyProductInput[]
+  skipDuplicates?: boolean
+}
+
+export type Products_SpecificationUpsertWithWhereUniqueWithoutProductInput = {
+  where: Prisma.Products_SpecificationWhereUniqueInput
+  update: Prisma.XOR<Prisma.Products_SpecificationUpdateWithoutProductInput, Prisma.Products_SpecificationUncheckedUpdateWithoutProductInput>
+  create: Prisma.XOR<Prisma.Products_SpecificationCreateWithoutProductInput, Prisma.Products_SpecificationUncheckedCreateWithoutProductInput>
+}
+
+export type Products_SpecificationUpdateWithWhereUniqueWithoutProductInput = {
+  where: Prisma.Products_SpecificationWhereUniqueInput
+  data: Prisma.XOR<Prisma.Products_SpecificationUpdateWithoutProductInput, Prisma.Products_SpecificationUncheckedUpdateWithoutProductInput>
+}
+
+export type Products_SpecificationUpdateManyWithWhereWithoutProductInput = {
+  where: Prisma.Products_SpecificationScalarWhereInput
+  data: Prisma.XOR<Prisma.Products_SpecificationUpdateManyMutationInput, Prisma.Products_SpecificationUncheckedUpdateManyWithoutProductInput>
+}
+
+export type Products_SpecificationScalarWhereInput = {
+  AND?: Prisma.Products_SpecificationScalarWhereInput | Prisma.Products_SpecificationScalarWhereInput[]
+  OR?: Prisma.Products_SpecificationScalarWhereInput[]
+  NOT?: Prisma.Products_SpecificationScalarWhereInput | Prisma.Products_SpecificationScalarWhereInput[]
+  id?: Prisma.StringFilter<"Products_Specification"> | string
+  productId?: Prisma.StringFilter<"Products_Specification"> | string
+  key?: Prisma.StringFilter<"Products_Specification"> | string
+  value?: Prisma.StringFilter<"Products_Specification"> | string
+  createdAt?: Prisma.DateTimeFilter<"Products_Specification"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Products_Specification"> | Date | string
+}
+
+export type Products_SpecificationCreateManyProductInput = {
+  id?: string
+  key: string
+  value: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type Products_SpecificationUpdateWithoutProductInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type Products_SpecificationUncheckedUpdateWithoutProductInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type Products_SpecificationUncheckedUpdateManyWithoutProductInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  key?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 
 
 export type Products_SpecificationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -336,6 +476,7 @@ export type Products_SpecificationSelect<ExtArgs extends runtime.Types.Extension
   value?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  Product?: boolean | Prisma.ProductsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["products_Specification"]>
 
 export type Products_SpecificationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -345,6 +486,7 @@ export type Products_SpecificationSelectCreateManyAndReturn<ExtArgs extends runt
   value?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  Product?: boolean | Prisma.ProductsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["products_Specification"]>
 
 export type Products_SpecificationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -354,6 +496,7 @@ export type Products_SpecificationSelectUpdateManyAndReturn<ExtArgs extends runt
   value?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  Product?: boolean | Prisma.ProductsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["products_Specification"]>
 
 export type Products_SpecificationSelectScalar = {
@@ -366,10 +509,21 @@ export type Products_SpecificationSelectScalar = {
 }
 
 export type Products_SpecificationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "productId" | "key" | "value" | "createdAt" | "updatedAt", ExtArgs["result"]["products_Specification"]>
+export type Products_SpecificationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  Product?: boolean | Prisma.ProductsDefaultArgs<ExtArgs>
+}
+export type Products_SpecificationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  Product?: boolean | Prisma.ProductsDefaultArgs<ExtArgs>
+}
+export type Products_SpecificationIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  Product?: boolean | Prisma.ProductsDefaultArgs<ExtArgs>
+}
 
 export type $Products_SpecificationPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Products_Specification"
-  objects: {}
+  objects: {
+    Product: Prisma.$ProductsPayload<ExtArgs>
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     productId: string
@@ -771,6 +925,7 @@ readonly fields: Products_SpecificationFieldRefs;
  */
 export interface Prisma__Products_SpecificationClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  Product<T extends Prisma.ProductsDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductsDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductsClient<runtime.Types.Result.GetResult<Prisma.$ProductsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -823,6 +978,10 @@ export type Products_SpecificationFindUniqueArgs<ExtArgs extends runtime.Types.E
    */
   omit?: Prisma.Products_SpecificationOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.Products_SpecificationInclude<ExtArgs> | null
+  /**
    * Filter, which Products_Specification to fetch.
    */
   where: Prisma.Products_SpecificationWhereUniqueInput
@@ -841,6 +1000,10 @@ export type Products_SpecificationFindUniqueOrThrowArgs<ExtArgs extends runtime.
    */
   omit?: Prisma.Products_SpecificationOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.Products_SpecificationInclude<ExtArgs> | null
+  /**
    * Filter, which Products_Specification to fetch.
    */
   where: Prisma.Products_SpecificationWhereUniqueInput
@@ -858,6 +1021,10 @@ export type Products_SpecificationFindFirstArgs<ExtArgs extends runtime.Types.Ex
    * Omit specific fields from the Products_Specification
    */
   omit?: Prisma.Products_SpecificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.Products_SpecificationInclude<ExtArgs> | null
   /**
    * Filter, which Products_Specification to fetch.
    */
@@ -907,6 +1074,10 @@ export type Products_SpecificationFindFirstOrThrowArgs<ExtArgs extends runtime.T
    */
   omit?: Prisma.Products_SpecificationOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.Products_SpecificationInclude<ExtArgs> | null
+  /**
    * Filter, which Products_Specification to fetch.
    */
   where?: Prisma.Products_SpecificationWhereInput
@@ -954,6 +1125,10 @@ export type Products_SpecificationFindManyArgs<ExtArgs extends runtime.Types.Ext
    * Omit specific fields from the Products_Specification
    */
   omit?: Prisma.Products_SpecificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.Products_SpecificationInclude<ExtArgs> | null
   /**
    * Filter, which Products_Specifications to fetch.
    */
@@ -1003,6 +1178,10 @@ export type Products_SpecificationCreateArgs<ExtArgs extends runtime.Types.Exten
    */
   omit?: Prisma.Products_SpecificationOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.Products_SpecificationInclude<ExtArgs> | null
+  /**
    * The data needed to create a Products_Specification.
    */
   data: Prisma.XOR<Prisma.Products_SpecificationCreateInput, Prisma.Products_SpecificationUncheckedCreateInput>
@@ -1036,6 +1215,10 @@ export type Products_SpecificationCreateManyAndReturnArgs<ExtArgs extends runtim
    */
   data: Prisma.Products_SpecificationCreateManyInput | Prisma.Products_SpecificationCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.Products_SpecificationIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1050,6 +1233,10 @@ export type Products_SpecificationUpdateArgs<ExtArgs extends runtime.Types.Exten
    * Omit specific fields from the Products_Specification
    */
   omit?: Prisma.Products_SpecificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.Products_SpecificationInclude<ExtArgs> | null
   /**
    * The data needed to update a Products_Specification.
    */
@@ -1102,6 +1289,10 @@ export type Products_SpecificationUpdateManyAndReturnArgs<ExtArgs extends runtim
    * Limit how many Products_Specifications to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.Products_SpecificationIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1116,6 +1307,10 @@ export type Products_SpecificationUpsertArgs<ExtArgs extends runtime.Types.Exten
    * Omit specific fields from the Products_Specification
    */
   omit?: Prisma.Products_SpecificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.Products_SpecificationInclude<ExtArgs> | null
   /**
    * The filter to search for the Products_Specification to update in case it exists.
    */
@@ -1142,6 +1337,10 @@ export type Products_SpecificationDeleteArgs<ExtArgs extends runtime.Types.Exten
    * Omit specific fields from the Products_Specification
    */
   omit?: Prisma.Products_SpecificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.Products_SpecificationInclude<ExtArgs> | null
   /**
    * Filter which Products_Specification to delete.
    */
@@ -1174,4 +1373,8 @@ export type Products_SpecificationDefaultArgs<ExtArgs extends runtime.Types.Exte
    * Omit specific fields from the Products_Specification
    */
   omit?: Prisma.Products_SpecificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.Products_SpecificationInclude<ExtArgs> | null
 }

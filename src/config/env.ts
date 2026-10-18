@@ -17,6 +17,9 @@ const envConfig = {
    app_name: env.get("APP_NAME").asString(),
    admin_email: env.get("ADMIN_EMAIL").asString(),
    frontend_url: env.get("FRONTEND_URL").asString(),
+   cloudinary_cloud_name: env.get("CLOUDINARY_CLOUD_NAME").asString(),
+   cloudinary_api_key: env.get("CLOUDINARY_API_KEY").asString(),
+   cloudinary_api_secret: env.get("CLOUDINARY_API_SECRET").asString(),
 
    
 }

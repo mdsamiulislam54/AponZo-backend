@@ -72,6 +72,16 @@ export type Category = Prisma.CategoryModel
  */
 export type Products = Prisma.ProductsModel
 /**
+ * Model ProductImage
+ * 
+ */
+export type ProductImage = Prisma.ProductImageModel
+/**
+ * Model Products_Variant
+ * 
+ */
+export type Products_Variant = Prisma.Products_VariantModel
+/**
  * Model Products_Specification
  * 
  */
