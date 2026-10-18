@@ -1,7 +1,9 @@
 import status from "http-status";
 import { prisma } from "../../lib/prisma";
 import { AppError } from "../../middlewares/appErrors";
-import { IProductCreate } from "./products.validation";
+import { IProductCreate, IReplaceImage } from "./products.validation";
+import { uploadToCloudinary } from "../../utils/uploadToCloudinary";
+import { deleteFromCloudinary } from "../../utils/deleteFromCloudinary";
 
 const createProduct = async (userId: string, product: IProductCreate) => {
     const { name, description, categoryId, basePrice, features, isShippingFree, slug, shippingFee, discountPrice, tags, brand, isFeatured,
@@ -119,6 +121,112 @@ const createProduct = async (userId: string, product: IProductCreate) => {
 
     );
 }
+const getAllProducts = async () => {
+    return await prisma.products.findMany({
+        where: {
+            isDeleted: false
+        },
+        include: {
+            ProductImages: true
+
+        }
+
+    })
+}
+const replaceProductsImages = async (userId: string, payload: IReplaceImage) => {
+    const { file, imageId, productId } = payload
+    const user = await prisma.user.findUnique({
+        where: {
+            id: userId
+        },
+        select: {
+            seller: {
+                select: {
+                    Store: { select: { id: true } }
+                }
+            }
+        }
+
+    });
+    const storeId = user?.seller?.Store?.id;
+    if (!storeId) throw new AppError(status.NOT_FOUND, 'Store not found');
+
+    const oldImage = await prisma.productImage.findFirst({
+        where: {
+            id: imageId,
+            productId: productId,
+            product: {
+                storeId,
+                isDeleted: false
+            }
+        }
+    });
+
+    if (!oldImage) throw new AppError(status.NOT_FOUND, 'Image not found');
+
+    const newImage = await uploadToCloudinary(file);
+
+    let uploadedImage;
+
+    try {
+        uploadedImage = await prisma.productImage.update({
+            where: {
+                id: oldImage.id
+            },
+
+            data: {
+                url: newImage.url,
+                publicId: newImage.publicId
+            }
+        })
+    } catch (error) {
+        try {
+            await deleteFromCloudinary(oldImage.publicId);
+        } catch (cleanupError) {
+            console.error(
+                "Failed to clean up new Cloudinary image:",
+                oldImage.publicId,
+                cleanupError
+            );
+        }
+
+        throw error;
+    }
+
+    try {
+        await deleteFromCloudinary(oldImage.publicId);
+    } catch (cleanupError) {
+        console.error(
+            "Failed to clean up new Cloudinary image:",
+            oldImage.publicId,
+            cleanupError
+        );
+    }
+
+
+
+
+
+
+
+}
+
+
+const deleteProductById = async (id: string) => {
+    const product = await prisma.products.delete({
+        where: {
+            id
+        }
+    })
+    return product
+}
+
+
+
 export const productService = {
-    createProduct
+    createProduct,
+    getAllProducts,
+    replaceProductsImages,
+    deleteProductById
+
 }

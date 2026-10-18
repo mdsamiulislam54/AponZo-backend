@@ -7,14 +7,32 @@ import { productsZodSchema } from "./products.validation";
 import { productsController } from "./products.controller";
 
 const router = Router();
+router.get("/" ,productsController.getAllProducts);
+// router.get("/:productId",);
 
 router.post(
     "/",
-    authorization(USER_ROLE.SELLER,USER_ROLE.ADMIN),
-    upload.array("images",5),
+    authorization(USER_ROLE.SELLER, USER_ROLE.ADMIN),
+    upload.array("images", 5),
     zodValidation(productsZodSchema),
     productsController.createProducts
 
 )
+// router.patch(
+//     "/:productId",
+//     authorization(USER_ROLE.SELLER, USER_ROLE.ADMIN),
+//     upload.array("images", 5),
+//     zodValidation(productsZodSchema.partial()),
+//     // productsController.replaceProductsImages
+// )
+
+router.patch(
+    "/:productId/images/:imageId",
+    authorization(USER_ROLE.SELLER, USER_ROLE.ADMIN),
+    upload.single("image"),
+    productsController.replaceProductsImages
+)
+
+router.delete("/:productId", productsController.deleteProductById)
 
 export const productsRoute = router;

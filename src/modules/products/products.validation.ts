@@ -20,7 +20,11 @@ interface IProductCreate {
   isShippingFree: boolean;
   isFeatured: boolean;
 }
-
+export interface IReplaceImage{
+  productId: string;
+  imageId: string;
+  file: Express.Multer.File;
+}
 interface IProductUpdate {
   name?: string;
   slug?: string;
