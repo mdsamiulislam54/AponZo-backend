@@ -11,6 +11,11 @@ export interface IReplaceImage {
 }
 
 
+export interface IDeleteImage {
+  productId: string;
+  imageId: string;
+}
+
 
 export const productsZodSchema = z.object({
   specifications: jsonField(z.array(
@@ -54,51 +59,51 @@ export const productsZodSchema = z.object({
 
 export const productUpdateZodSchema = z.object({
 
-    specifications: jsonField(
-        z.array(
-            z.object({
-                id: z.string().min(1).optional(),
-                key: z.string().trim().min(1).optional(),
-                value: z.string().trim().min(1).optional(),
-            })
-        )
-    ).optional(),
+  specifications: jsonField(
+    z.array(
+      z.object({
+        id: z.string().min(1).optional(),
+        key: z.string().trim().min(1).optional(),
+        value: z.string().trim().min(1).optional(),
+      })
+    )
+  ).optional(),
 
-    variants: jsonField(
-        z.array(
-            z.object({
-                id: z.string().min(1).optional(),
-                sku: z.string().trim().min(1).optional(),
-                color: z.string().trim().optional(),
-                size: z.string().trim().optional(),
-                price: z.coerce.number().finite().nonnegative().optional(),
-                stock: z.coerce.number().int().nonnegative().optional(),
-            })
-        )
-    ).optional(),
+  variants: jsonField(
+    z.array(
+      z.object({
+        id: z.string().min(1).optional(),
+        sku: z.string().trim().min(1).optional(),
+        color: z.string().trim().optional(),
+        size: z.string().trim().optional(),
+        price: z.coerce.number().finite().nonnegative().optional(),
+        stock: z.coerce.number().int().nonnegative().optional(),
+      })
+    )
+  ).optional(),
 
-    categoryId: z.string().trim().min(1).optional(),
-    name: z.string().trim().min(1).optional(),
-    slug: z.string().trim().min(1).optional(),
-    description: z.string().optional(),
-    brand: z.string().optional(),
+  categoryId: z.string().trim().min(1).optional(),
+  name: z.string().trim().min(1).optional(),
+  slug: z.string().trim().min(1).optional(),
+  description: z.string().optional(),
+  brand: z.string().optional(),
 
-    tags: jsonField(
-        z.array(z.string())
-    ).optional(),
+  tags: jsonField(
+    z.array(z.string())
+  ).optional(),
 
-    features: jsonField(
-        z.array(z.string())
-    ).optional(),
-
-
-    basePrice: z.coerce.number().finite().nonnegative().optional(),
-    discountPrice: z.coerce.number().finite().nonnegative().optional(),
-    shippingFee: z.coerce.number().finite().nonnegative().optional(),
+  features: jsonField(
+    z.array(z.string())
+  ).optional(),
 
 
-    isShippingFree: formBoolean.optional(),
-    isFeatured: formBoolean.optional(),
+  basePrice: z.coerce.number().finite().nonnegative().optional(),
+  discountPrice: z.coerce.number().finite().nonnegative().optional(),
+  shippingFee: z.coerce.number().finite().nonnegative().optional(),
+
+
+  isShippingFree: formBoolean.optional(),
+  isFeatured: formBoolean.optional(),
 }).strict();
 
 export type IProductUpdate = z.infer<typeof productUpdateZodSchema>;

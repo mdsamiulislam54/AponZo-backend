@@ -11,6 +11,7 @@ router.get("/" ,productsController.getAllProducts);
 // router.get("/:productId",);
 
 router.post("/",authorization(USER_ROLE.SELLER, USER_ROLE.ADMIN),upload.array("images", 5),zodValidation(productsZodSchema),productsController.createProducts)
+router.post("/add-image/:productId",authorization(USER_ROLE.SELLER, USER_ROLE.ADMIN),upload.single("images"),productsController.addProductImage)
 
 router.patch(
     "/update/:productId",
@@ -18,13 +19,7 @@ router.patch(
     zodValidation(productUpdateZodSchema.partial()),
     productsController.updateProductById
 )
-// router.patch(
-//     "/:productId",
-//     authorization(USER_ROLE.SELLER, USER_ROLE.ADMIN),
-//     upload.array("images", 5),
-//     zodValidation(productsZodSchema.partial()),
-//     // productsController.replaceProductsImages
-// )
+
 
 router.patch(
     "/:productId/images/:imageId",
@@ -34,5 +29,8 @@ router.patch(
 )
 
 router.delete("/:productId", productsController.deleteProductById)
+router.delete("specification/:id", authorization(USER_ROLE.SELLER, USER_ROLE.ADMIN) ,productsController.deleteSpecificationById)
+router.delete("variant/:id", authorization(USER_ROLE.SELLER, USER_ROLE.ADMIN) ,productsController.deleteProductVariantById)
+router.delete("/image/:imageId/product/:productId", authorization(USER_ROLE.SELLER, USER_ROLE.ADMIN),productsController.deleteProductImage)
 
 export const productsRoute = router;
