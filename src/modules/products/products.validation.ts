@@ -108,3 +108,17 @@ export const productUpdateZodSchema = z.object({
 
 export type IProductUpdate = z.infer<typeof productUpdateZodSchema>;
 export type IProductCreate = z.infer<typeof productsZodSchema>;
+
+
+
+export type InventoryQueryDTO = {
+  page: number;
+  limit: number;
+  skip: number;
+  take: number;
+
+  search?: string;
+  stockStatus?: "IN_STOCK" | "LOW_STOCK" | "OUT_OF_STOCK";
+  sortBy?: "stock" | "createdAt" | "updatedAt";
+  order?: "asc" | "desc";
+};

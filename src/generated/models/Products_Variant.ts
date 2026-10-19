@@ -44,6 +44,7 @@ export type Products_VariantMinAggregateOutputType = {
   size: string | null
   price: number | null
   stock: number | null
+  stockStatus: $Enums.StockStatus | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -56,6 +57,7 @@ export type Products_VariantMaxAggregateOutputType = {
   size: string | null
   price: number | null
   stock: number | null
+  stockStatus: $Enums.StockStatus | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -68,6 +70,7 @@ export type Products_VariantCountAggregateOutputType = {
   size: number
   price: number
   stock: number
+  stockStatus: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -92,6 +95,7 @@ export type Products_VariantMinAggregateInputType = {
   size?: true
   price?: true
   stock?: true
+  stockStatus?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -104,6 +108,7 @@ export type Products_VariantMaxAggregateInputType = {
   size?: true
   price?: true
   stock?: true
+  stockStatus?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -116,6 +121,7 @@ export type Products_VariantCountAggregateInputType = {
   size?: true
   price?: true
   stock?: true
+  stockStatus?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -215,6 +221,7 @@ export type Products_VariantGroupByOutputType = {
   size: string | null
   price: number
   stock: number
+  stockStatus: $Enums.StockStatus
   createdAt: Date
   updatedAt: Date
   _count: Products_VariantCountAggregateOutputType | null
@@ -250,6 +257,7 @@ export type Products_VariantWhereInput = {
   size?: Prisma.StringNullableFilter<"Products_Variant"> | string | null
   price?: Prisma.FloatFilter<"Products_Variant"> | number
   stock?: Prisma.IntFilter<"Products_Variant"> | number
+  stockStatus?: Prisma.EnumStockStatusFilter<"Products_Variant"> | $Enums.StockStatus
   createdAt?: Prisma.DateTimeFilter<"Products_Variant"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Products_Variant"> | Date | string
   product?: Prisma.XOR<Prisma.ProductsScalarRelationFilter, Prisma.ProductsWhereInput>
@@ -263,6 +271,7 @@ export type Products_VariantOrderByWithRelationInput = {
   size?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrder
   stock?: Prisma.SortOrder
+  stockStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   product?: Prisma.ProductsOrderByWithRelationInput
@@ -279,6 +288,7 @@ export type Products_VariantWhereUniqueInput = Prisma.AtLeast<{
   size?: Prisma.StringNullableFilter<"Products_Variant"> | string | null
   price?: Prisma.FloatFilter<"Products_Variant"> | number
   stock?: Prisma.IntFilter<"Products_Variant"> | number
+  stockStatus?: Prisma.EnumStockStatusFilter<"Products_Variant"> | $Enums.StockStatus
   createdAt?: Prisma.DateTimeFilter<"Products_Variant"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Products_Variant"> | Date | string
   product?: Prisma.XOR<Prisma.ProductsScalarRelationFilter, Prisma.ProductsWhereInput>
@@ -292,6 +302,7 @@ export type Products_VariantOrderByWithAggregationInput = {
   size?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrder
   stock?: Prisma.SortOrder
+  stockStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.Products_VariantCountOrderByAggregateInput
@@ -312,6 +323,7 @@ export type Products_VariantScalarWhereWithAggregatesInput = {
   size?: Prisma.StringNullableWithAggregatesFilter<"Products_Variant"> | string | null
   price?: Prisma.FloatWithAggregatesFilter<"Products_Variant"> | number
   stock?: Prisma.IntWithAggregatesFilter<"Products_Variant"> | number
+  stockStatus?: Prisma.EnumStockStatusWithAggregatesFilter<"Products_Variant"> | $Enums.StockStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Products_Variant"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Products_Variant"> | Date | string
 }
@@ -323,6 +335,7 @@ export type Products_VariantCreateInput = {
   size?: string | null
   price: number
   stock: number
+  stockStatus?: $Enums.StockStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   product: Prisma.ProductsCreateNestedOneWithoutProducts_VariantInput
@@ -336,6 +349,7 @@ export type Products_VariantUncheckedCreateInput = {
   size?: string | null
   price: number
   stock: number
+  stockStatus?: $Enums.StockStatus
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -347,6 +361,7 @@ export type Products_VariantUpdateInput = {
   size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   stock?: Prisma.IntFieldUpdateOperationsInput | number
+  stockStatus?: Prisma.EnumStockStatusFieldUpdateOperationsInput | $Enums.StockStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   product?: Prisma.ProductsUpdateOneRequiredWithoutProducts_VariantNestedInput
@@ -360,6 +375,7 @@ export type Products_VariantUncheckedUpdateInput = {
   size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   stock?: Prisma.IntFieldUpdateOperationsInput | number
+  stockStatus?: Prisma.EnumStockStatusFieldUpdateOperationsInput | $Enums.StockStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -372,6 +388,7 @@ export type Products_VariantCreateManyInput = {
   size?: string | null
   price: number
   stock: number
+  stockStatus?: $Enums.StockStatus
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -383,6 +400,7 @@ export type Products_VariantUpdateManyMutationInput = {
   size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   stock?: Prisma.IntFieldUpdateOperationsInput | number
+  stockStatus?: Prisma.EnumStockStatusFieldUpdateOperationsInput | $Enums.StockStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -395,6 +413,7 @@ export type Products_VariantUncheckedUpdateManyInput = {
   size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   stock?: Prisma.IntFieldUpdateOperationsInput | number
+  stockStatus?: Prisma.EnumStockStatusFieldUpdateOperationsInput | $Enums.StockStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -417,6 +436,7 @@ export type Products_VariantCountOrderByAggregateInput = {
   size?: Prisma.SortOrder
   price?: Prisma.SortOrder
   stock?: Prisma.SortOrder
+  stockStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -434,6 +454,7 @@ export type Products_VariantMaxOrderByAggregateInput = {
   size?: Prisma.SortOrder
   price?: Prisma.SortOrder
   stock?: Prisma.SortOrder
+  stockStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -446,6 +467,7 @@ export type Products_VariantMinOrderByAggregateInput = {
   size?: Prisma.SortOrder
   price?: Prisma.SortOrder
   stock?: Prisma.SortOrder
+  stockStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -505,6 +527,10 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type EnumStockStatusFieldUpdateOperationsInput = {
+  set?: $Enums.StockStatus
+}
+
 export type Products_VariantCreateWithoutProductInput = {
   id?: string
   sku: string
@@ -512,6 +538,7 @@ export type Products_VariantCreateWithoutProductInput = {
   size?: string | null
   price: number
   stock: number
+  stockStatus?: $Enums.StockStatus
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -523,6 +550,7 @@ export type Products_VariantUncheckedCreateWithoutProductInput = {
   size?: string | null
   price: number
   stock: number
+  stockStatus?: $Enums.StockStatus
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -564,6 +592,7 @@ export type Products_VariantScalarWhereInput = {
   size?: Prisma.StringNullableFilter<"Products_Variant"> | string | null
   price?: Prisma.FloatFilter<"Products_Variant"> | number
   stock?: Prisma.IntFilter<"Products_Variant"> | number
+  stockStatus?: Prisma.EnumStockStatusFilter<"Products_Variant"> | $Enums.StockStatus
   createdAt?: Prisma.DateTimeFilter<"Products_Variant"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Products_Variant"> | Date | string
 }
@@ -575,6 +604,7 @@ export type Products_VariantCreateManyProductInput = {
   size?: string | null
   price: number
   stock: number
+  stockStatus?: $Enums.StockStatus
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -586,6 +616,7 @@ export type Products_VariantUpdateWithoutProductInput = {
   size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   stock?: Prisma.IntFieldUpdateOperationsInput | number
+  stockStatus?: Prisma.EnumStockStatusFieldUpdateOperationsInput | $Enums.StockStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -597,6 +628,7 @@ export type Products_VariantUncheckedUpdateWithoutProductInput = {
   size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   stock?: Prisma.IntFieldUpdateOperationsInput | number
+  stockStatus?: Prisma.EnumStockStatusFieldUpdateOperationsInput | $Enums.StockStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -608,6 +640,7 @@ export type Products_VariantUncheckedUpdateManyWithoutProductInput = {
   size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   stock?: Prisma.IntFieldUpdateOperationsInput | number
+  stockStatus?: Prisma.EnumStockStatusFieldUpdateOperationsInput | $Enums.StockStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -622,6 +655,7 @@ export type Products_VariantSelect<ExtArgs extends runtime.Types.Extensions.Inte
   size?: boolean
   price?: boolean
   stock?: boolean
+  stockStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   product?: boolean | Prisma.ProductsDefaultArgs<ExtArgs>
@@ -635,6 +669,7 @@ export type Products_VariantSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   size?: boolean
   price?: boolean
   stock?: boolean
+  stockStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   product?: boolean | Prisma.ProductsDefaultArgs<ExtArgs>
@@ -648,6 +683,7 @@ export type Products_VariantSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   size?: boolean
   price?: boolean
   stock?: boolean
+  stockStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   product?: boolean | Prisma.ProductsDefaultArgs<ExtArgs>
@@ -661,11 +697,12 @@ export type Products_VariantSelectScalar = {
   size?: boolean
   price?: boolean
   stock?: boolean
+  stockStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type Products_VariantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "productId" | "sku" | "color" | "size" | "price" | "stock" | "createdAt" | "updatedAt", ExtArgs["result"]["products_Variant"]>
+export type Products_VariantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "productId" | "sku" | "color" | "size" | "price" | "stock" | "stockStatus" | "createdAt" | "updatedAt", ExtArgs["result"]["products_Variant"]>
 export type Products_VariantInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   product?: boolean | Prisma.ProductsDefaultArgs<ExtArgs>
 }
@@ -689,6 +726,7 @@ export type $Products_VariantPayload<ExtArgs extends runtime.Types.Extensions.In
     size: string | null
     price: number
     stock: number
+    stockStatus: $Enums.StockStatus
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["products_Variant"]>
@@ -1122,6 +1160,7 @@ export interface Products_VariantFieldRefs {
   readonly size: Prisma.FieldRef<"Products_Variant", 'String'>
   readonly price: Prisma.FieldRef<"Products_Variant", 'Float'>
   readonly stock: Prisma.FieldRef<"Products_Variant", 'Int'>
+  readonly stockStatus: Prisma.FieldRef<"Products_Variant", 'StockStatus'>
   readonly createdAt: Prisma.FieldRef<"Products_Variant", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Products_Variant", 'DateTime'>
 }

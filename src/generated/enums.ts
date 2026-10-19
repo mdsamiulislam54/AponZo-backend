@@ -46,6 +46,15 @@ export const PRODUCT_STATUS = {
 export type PRODUCT_STATUS = (typeof PRODUCT_STATUS)[keyof typeof PRODUCT_STATUS]
 
 
+export const StockStatus = {
+  IN_STOCK: 'IN_STOCK',
+  LOW_STOCK: 'LOW_STOCK',
+  OUT_OF_STOCK: 'OUT_OF_STOCK'
+} as const
+
+export type StockStatus = (typeof StockStatus)[keyof typeof StockStatus]
+
+
 export const SELLER_STATUS = {
   PENDING: 'PENDING',
   APPROVED: 'APPROVED',

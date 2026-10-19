@@ -6,6 +6,7 @@ model Products_Variant {
     size     String?
     price    Float
     stock    Int
+    stockStatus StockStatus @default(IN_STOCK)
     product  Products   @relation(fields: [productId], references: [id])
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt
@@ -15,3 +16,8 @@ model Products_Variant {
     @@map("products_variants")
 }
 
+enum StockStatus {
+    IN_STOCK
+    LOW_STOCK
+    OUT_OF_STOCK
+}
