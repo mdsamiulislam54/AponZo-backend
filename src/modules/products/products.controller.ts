@@ -25,6 +25,17 @@ const createProducts = catchAsync(async (req: Request, res: Response) => {
         data: product,
     });
 });
+const updateProductById = catchAsync(async (req: Request, res: Response) => {
+    const userId = req.user?.id as string;
+    const productId = req.params.productId as string;
+    const product = await productService.updateProductById(userId, productId, req.body);
+    sendResponse(res, {
+        success: true,
+        status: status.OK,
+        message: "Products update successfully",
+        data: product,
+    });
+});
 const replaceProductsImages = catchAsync(async (req: Request, res: Response) => {
     const userId = req.user?.id as string;
     const payload = {
@@ -69,5 +80,6 @@ export const productsController = {
     createProducts,
     replaceProductsImages,
     getAllProducts,
-    deleteProductById
+    deleteProductById,
+    updateProductById
 }

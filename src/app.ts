@@ -7,6 +7,7 @@ import { logger } from "./config/logger"
 import { apiRoutes } from "./utils/route"
 
 import globalErrorHandler from "./middlewares/error.middleware"
+import notFound from "./middlewares/notFound";
 
 const app: Application = express()
 
@@ -24,7 +25,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.use("/api/v1", apiRoutes);
-
+app.use(notFound)
 app.use(globalErrorHandler)
 
 export default app;

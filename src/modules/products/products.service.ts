@@ -1,7 +1,7 @@
 import status from "http-status";
 import { prisma } from "../../lib/prisma";
 import { AppError } from "../../middlewares/appErrors";
-import { IProductCreate, IReplaceImage } from "./products.validation";
+import { IProductCreate, IProductUpdate, IReplaceImage } from "./products.validation";
 import { uploadToCloudinary } from "../../utils/uploadToCloudinary";
 import { deleteFromCloudinary } from "../../utils/deleteFromCloudinary";
 
@@ -127,7 +127,9 @@ const getAllProducts = async () => {
             isDeleted: false
         },
         include: {
-            ProductImages: true
+            ProductImages: true,
+            Products_Specification:true,
+            Products_Variant:true
 
         }
 
@@ -211,6 +213,124 @@ const replaceProductsImages = async (userId: string, payload: IReplaceImage) => 
 
 }
 
+const updateProductById = async (userId: string, productId: string, data: Partial<IProductUpdate>) => {
+    const { specifications, variants, categoryId, ...productData } = data;
+    const user = await prisma.user.findUnique({
+        where: {
+            id: userId,
+        },
+        select: {
+            seller: {
+                select: {
+                    Store: {
+                        select: {
+                            id: true,
+                        },
+                    },
+                },
+            },
+        },
+    });
+    const storeId = user?.seller?.Store?.id;
+
+    if (!storeId) { throw new AppError(status.FORBIDDEN, "User is not a seller or does not have a store"); }
+
+
+    return prisma.$transaction(async (tx) => {
+        const existingProduct = await tx.products.findFirst({
+            where: {
+                id: productId,
+                storeId,
+            },
+            select: { id: true },
+        });
+
+        if (!existingProduct) { throw new AppError(status.NOT_FOUND, "Product not found") };
+
+        const updatedProduct = await tx.products.update({
+            where: {
+                id: existingProduct?.id,
+            },
+            data: {
+                ...productData
+            },
+        });
+
+        if (specifications !== undefined) {
+            for (const spec of specifications) {
+                if (spec.id) {
+                    const result = await tx.products_Specification.updateMany({
+                        where: {
+                            id: spec.id,
+                            productId
+                        },
+                        data: {
+                            key: spec.key,
+                            value: spec.value,
+                        },
+                    });
+                    if (result.count !== 1) {
+                        throw new AppError(status.NOT_FOUND, "Product specification not found")
+                    }
+                } else {
+                    await tx.products_Specification.create({
+                        data: {
+                            key: spec.key!,
+                            value: spec.value!,
+                            productId: existingProduct?.id
+                        },
+                    });
+
+
+                }
+
+
+            }
+        }
+
+        if (variants !== undefined) {
+            for (const variant of variants) {
+                if (variant.id) {
+                    const result = await tx.products_Variant.updateMany({
+                        where: {
+                            id: variant.id,
+                            productId: existingProduct?.id,
+                        },
+                        data: {
+                            sku: variant.sku,
+                            color: variant.color,
+                            size: variant.size,
+                            price: variant.price,
+                            stock: variant.stock,
+
+                        },
+                    });
+                    if (result.count !== 1) {
+                        throw new AppError(status.BAD_REQUEST, 'Variant already exists')
+                    }
+
+                } else {
+                    await tx.products_Variant.create({
+                        data: {
+                            price: variant.price!,
+                            sku: variant.sku!,
+                            color: variant.color,
+                            size: variant.size,
+                            stock: variant.stock!,
+                            productId: existingProduct?.id,
+                        },
+                    });
+
+
+                }
+            }
+        }
+
+        return updatedProduct;
+    })
+
+}
+
 
 const deleteProductById = async (id: string) => {
     const product = await prisma.products.delete({
@@ -227,6 +347,7 @@ export const productService = {
     createProduct,
     getAllProducts,
     replaceProductsImages,
-    deleteProductById
+    deleteProductById,
+    updateProductById
 
 }
