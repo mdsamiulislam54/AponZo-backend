@@ -5,10 +5,11 @@ import { product_image_service } from "../service/products.image.service";
 import { Request, Response } from "express";
 import { inventorService } from "../service/inventory.service";
 import { getPagination } from "../../../utils/pagination";
+import { IQueryParams } from "../../../type/QueryParamsType";
 
 const getInventory = catchAsync(async (req: Request, res: Response) => {
     const userId = req.user?.id as string;
-    const query = getPagination(req.query);
+    const query = req.query as IQueryParams;
     console.log(query);
     const product = await inventorService.getInventory(userId, query);
     sendResponse(res, {

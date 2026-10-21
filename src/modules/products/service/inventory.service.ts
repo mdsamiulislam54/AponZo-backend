@@ -1,9 +1,11 @@
 import status from "http-status";
-import { InventoryQueryDTO} from "../products.validation";
+import { InventoryQueryDTO } from "../products.validation";
 import { prisma } from "../../../lib/prisma";
 import { AppError } from "../../../middlewares/appErrors";
 
 import { Prisma } from "../../../generated/client";
+import { IQueryParams } from "../../../type/QueryParamsType";
+import { QueryBuilder } from "../../../utils/QueryBuilder";
 // getInventory()	সব প্রোডাক্টের inventory দেখা
 // getInventoryByProductId()	নির্দিষ্ট প্রোডাক্টের সব variant-এর stock দেখা
 // getVariantStock()	নির্দিষ্ট variant-এর বর্তমান stock দেখা
@@ -15,9 +17,9 @@ import { Prisma } from "../../../generated/client";
 // getInventorySummary()	মোট variant, in-stock, low-stock ও out-of-stock-এর হিসাব
 // getStockMovements()	stock কখন, কত এবং কেন পরিবর্তিত হয়েছে, তা দেখা
 
-const getInventory = async (userId: string, query: InventoryQueryDTO) => {
+const getInventory = async (userId: string, query: IQueryParams) => {
     const { limit, skip, search, sortBy, stockStatus, order } = query
-    console.log("service",query)
+    console.log("service", query)
     const user = await prisma.user.findUnique({
         where: {
             id: userId,
@@ -39,63 +41,78 @@ const getInventory = async (userId: string, query: InventoryQueryDTO) => {
     if (!storeId) { throw new AppError(status.FORBIDDEN, "User is not a seller or does not have a store"); }
 
     const validOrder = order === "asc" ? "asc" : "desc"
-  const where: Prisma.Products_VariantWhereInput = {
-  product: {
-    is: {
-      storeId,
-    },
-  },
+    //   const where: Prisma.Products_VariantWhereInput = {
+    //   product: {
+    //     is: {
+    //       storeId,
+    //     },
+    //   },
 
-  ...(stockStatus ? { stockStatus } : {}),
+    //   ...(stockStatus ? { stockStatus } : {}),
 
-  ...(search
-    ? {
-        OR: [
-          {
-            sku: {
-              contains: search,
-              mode: "insensitive",
-            },
-          },
-          {
-            color: {
-              contains: search,
-              mode: "insensitive",
-            },
-          },
-          {
-            size: {
-              contains: search,
-              mode: "insensitive",
-            },
-          },
-        ],
-      }
-    : {}),
-};
+    //   ...(search
+    //     ? {
+    //         OR: [
+    //           {
+    //             sku: {
+    //               contains: search,
+    //               mode: "insensitive",
+    //             },
+    //           },
+    //           {
+    //             color: {
+    //               contains: search,
+    //               mode: "insensitive",
+    //             },
+    //           },
+    //           {
+    //             size: {
+    //               contains: search,
+    //               mode: "insensitive",
+    //             },
+    //           },
+    //         ],
+    //       }
+    //     : {}),
+    // };
+
+    const builder = new QueryBuilder({}, query)
+        .search(["sku", "color", "size"])
+        .filter()
+        .build()
+
     const [inventory, total] = await Promise.all([
         prisma.products_Variant.findMany({
-            take: limit,
-            skip,
-            where,
+
+            where: {
+                product: {
+                    is: {
+                        storeId,
+                    }
+                },
+                ...builder.where,
+            },
+
             orderBy: {
                 [sortBy || "createdAt"]: validOrder,
             },
         }),
 
         prisma.products_Variant.count({
-            where,
+            where:{
+                ...builder.where,
+            },
         }),
     ]);
 
     return {
         data: inventory,
-        meta: {
-            total,
-            limit,
-            page: Math.floor(skip / limit) + 1,
-            totalPage: Math.ceil(total / limit),
-        }
+        // meta: {
+        //     total,
+        //     limit,
+        //     page: Math.floor(skip / limit) + 1,
+        //     totalPage: Math.ceil(total / limit),
+        // }
     }
 
 
