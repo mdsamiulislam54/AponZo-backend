@@ -15,4 +15,5 @@ export interface IQuery<TWhere = Record<string, unknown>> {
     skip?: number;
     take?: number;
     build?: () => void
+    getMeta?: (model:any) => void
 }

@@ -36,19 +36,17 @@ export class QueryBuilder {
         const filter = this.params.filter;
         if (filter) {
             const filters = filter.split(",");
-            console.log(filters);
             const where: any = {};
             filters.forEach(filter => {
                 let [key, value] = filter.split(":");
                 if (value.includes("-")) {
                     const [min, max] = value.split("-");
-                    console.log(min, max);
                     where[key] = {
                         gte: Number(min),
                         lte: Number(max)
                     }
-                    
-                }else{
+
+                } else {
                     where[key] = value;
                 }
 
@@ -64,7 +62,43 @@ export class QueryBuilder {
         return this;
     }
 
-    build(): IQuery {
-        return this.query;
+    sort() {
+        const sortBy = this.params.sortBy || "createdAt"
+        const sortOrder = this.params.sortOrder === "asc" ? "asc" : "desc";
+        this.sortBy = sortBy;
+        this.sortOrder = sortOrder;
+        console.log(sortBy, sortOrder)
+        this.query.orderBy = {
+            [sortBy]: sortOrder
+        }
+
+        return this;
+
     }
+
+    paginate() {
+        this.page = Number(this.params.page) || 1;
+        this.limit = Number(this.params.limit) || 10;
+        this.skip = (this.page - 1) * this.limit;
+        this.query.skip = this.skip;
+        this.query.take = this.limit;
+        return this;
+
+    }
+
+   async getMeta(model:any){
+        const total = await model.count({
+            where: this.query.where
+        });
+
+        return {
+            total,
+            page: this.page,
+            limit: this.limit,
+            totalPages: Math.ceil(total / this.limit)
+        }
+    }
+
+
+   
 }

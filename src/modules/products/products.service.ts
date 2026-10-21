@@ -1,9 +1,8 @@
 import status from "http-status";
 import { prisma } from "../../lib/prisma";
 import { AppError } from "../../middlewares/appErrors";
-import {  IDeleteImage, IProductCreate, IProductUpdate, IReplaceImage } from "./products.validation";
-import { uploadToCloudinary } from "../../utils/uploadToCloudinary";
-import { deleteFromCloudinary } from "../../utils/deleteFromCloudinary";
+import { IProductCreate, IProductUpdate,  } from "./products.validation";
+
 
 const createProduct = async (userId: string, product: IProductCreate) => {
     const { name, description, categoryId, basePrice, features, isShippingFree, slug, shippingFee, discountPrice, tags, brand, isFeatured,

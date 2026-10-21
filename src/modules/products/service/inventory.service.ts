@@ -18,7 +18,6 @@ import { QueryBuilder } from "../../../utils/QueryBuilder";
 // getStockMovements()	stock কখন, কত এবং কেন পরিবর্তিত হয়েছে, তা দেখা
 
 const getInventory = async (userId: string, query: IQueryParams) => {
-    const { limit, skip, search, sortBy, stockStatus, order } = query
     console.log("service", query)
     const user = await prisma.user.findUnique({
         where: {
@@ -40,79 +39,39 @@ const getInventory = async (userId: string, query: IQueryParams) => {
 
     if (!storeId) { throw new AppError(status.FORBIDDEN, "User is not a seller or does not have a store"); }
 
-    const validOrder = order === "asc" ? "asc" : "desc"
-    //   const where: Prisma.Products_VariantWhereInput = {
-    //   product: {
-    //     is: {
-    //       storeId,
-    //     },
-    //   },
-
-    //   ...(stockStatus ? { stockStatus } : {}),
-
-    //   ...(search
-    //     ? {
-    //         OR: [
-    //           {
-    //             sku: {
-    //               contains: search,
-    //               mode: "insensitive",
-    //             },
-    //           },
-    //           {
-    //             color: {
-    //               contains: search,
-    //               mode: "insensitive",
-    //             },
-    //           },
-    //           {
-    //             size: {
-    //               contains: search,
-    //               mode: "insensitive",
-    //             },
-    //           },
-    //         ],
-    //       }
-    //     : {}),
-    // };
-
     const builder = new QueryBuilder({}, query)
         .search(["sku", "color", "size"])
         .filter()
-        .build()
+        .sort()
+        .paginate()
+
 
     const [inventory, total] = await Promise.all([
         prisma.products_Variant.findMany({
-
+            take: builder.query.take,
+            skip: builder.query.skip,
             where: {
                 product: {
                     is: {
                         storeId,
                     }
                 },
-                ...builder.where,
+                ...builder.query.where,
             },
-
-            orderBy: {
-                [sortBy || "createdAt"]: validOrder,
-            },
+            orderBy: builder.query.orderBy,
         }),
 
         prisma.products_Variant.count({
             where:{
-                ...builder.where,
+               ...builder.query.where,
             },
         }),
     ]);
 
+    const meta = await builder.getMeta(prisma.products_Variant)
     return {
         data: inventory,
-        // meta: {
-        //     total,
-        //     limit,
-        //     page: Math.floor(skip / limit) + 1,
-        //     totalPage: Math.ceil(total / limit),
-        // }
+        meta,
     }
 
 
